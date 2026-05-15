@@ -149,10 +149,60 @@ set(IOS_MEMORY_SOURCES
     ios/platform/PageFaultHandler.cpp
 )
 
+# Common library sources needed at link time
+set(COMMON_LIB_SOURCES
+    src/common/FileSystem.cpp
+    src/common/Error.cpp
+    src/common/Console.cpp
+    src/common/HostSys.cpp
+    src/common/Assertions.cpp
+    src/common/StringUtil.cpp
+    src/common/SmallString.cpp
+    src/common/SettingsWrapper.cpp
+    src/common/Timer.cpp
+    src/common/ProgressCallback.cpp
+    src/common/PrecompiledHeader.cpp
+    src/common/MD5Digest.cpp
+    src/common/DynamicLibrary.cpp
+    src/common/Image.cpp
+    src/common/Perf.cpp
+    src/common/AlignedMalloc.cpp
+    src/common/StackWalker.cpp
+    src/common/CrashHandler.cpp
+    src/common/WindowInfo.cpp
+    src/common/ReadbackSpinManager.cpp
+    src/common/Semaphore.cpp
+    src/common/MemorySettingsInterface.cpp
+    src/common/MemoryInterface.cpp
+)
+
+# ccc library (needed by SymbolGuardian/SymbolImporter)
+set(CCC_SOURCES
+    src/3rdparty/ccc/src/ccc/ast.cpp
+    src/3rdparty/ccc/src/ccc/elf.cpp
+    src/3rdparty/ccc/src/ccc/elf_symtab.cpp
+    src/3rdparty/ccc/src/ccc/importer_flags.cpp
+    src/3rdparty/ccc/src/ccc/mdebug_analysis.cpp
+    src/3rdparty/ccc/src/ccc/mdebug_importer.cpp
+    src/3rdparty/ccc/src/ccc/mdebug_section.cpp
+    src/3rdparty/ccc/src/ccc/mdebug_symbols.cpp
+    src/3rdparty/ccc/src/ccc/sndll.cpp
+    src/3rdparty/ccc/src/ccc/stabs.cpp
+    src/3rdparty/ccc/src/ccc/stabs_to_ast.cpp
+    src/3rdparty/ccc/src/ccc/symbol_database.cpp
+    src/3rdparty/ccc/src/ccc/symbol_file.cpp
+    src/3rdparty/ccc/src/ccc/symbol_table.cpp
+    src/3rdparty/ccc/src/ccc/util.cpp
+)
+
+# Host abstraction sources
+set(HOST_SOURCES
+    src/Host/AudioStream.cpp
+)
+
 # Threading (Audit Sec 5.3)
 set(IOS_THREADING_SOURCES
     ios/platform/Threading_iOS.cpp
-    ios/platform/PageFaultHandler.cpp
 )
 
 # iOS Platform (Audit Sec 4.3, 9.2, 6.4)
@@ -184,6 +234,9 @@ add_executable(BionicSX2
     ${GS_CORE_SOURCES}
     ${SPU2_SOURCES}
     ${IOS_MEMORY_SOURCES}
+    ${COMMON_LIB_SOURCES}
+    ${HOST_SOURCES}
+    ${CCC_SOURCES}
     ${IOS_THREADING_SOURCES}
     ${IOS_PLATFORM_SOURCES}
     ${IOS_UI_SOURCES}
