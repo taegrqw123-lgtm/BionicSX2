@@ -164,7 +164,6 @@ set(COMMON_LIB_SOURCES
     src/common/PrecompiledHeader.cpp
     src/common/MD5Digest.cpp
     src/common/DynamicLibrary.cpp
-    src/common/Image.cpp
     src/common/Perf.cpp
     src/common/AlignedMalloc.cpp
     src/common/StackWalker.cpp
