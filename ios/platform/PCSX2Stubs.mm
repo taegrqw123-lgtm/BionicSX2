@@ -62,6 +62,30 @@ namespace FullscreenUI {
     void Shutdown() {}
 }
 
+// ── Additional HW I/O stubs ──
+bool ParamsRead = false;
+u32 R3000SymbolGuardian = 0;
+void readCache8(u32, bool) {}
+void writeCache8(u32, u8) {}
+void writeCache16(u32, u16) {}
+void writeCache32(u32, u32) {}
+void writeCache64(u32, u64) {}
+void writeCache128(u32, u64) {}
+u8  readCache8(u32 addr) { return 0; }
+u8  ipuRead8(u32) { return 0; }
+u16 ipuRead16(u32) { return 0; }
+u32 ipuRead32(u32) { return 0; }
+u64 ipuRead64(u32) { return 0; }
+void ipuWrite8(u32, u8) {}
+void ipuWrite16(u32, u16) {}
+void ipuWrite32(u32, u32) {}
+void ipuWrite64(u32, u64) {}
+u32 mdecRead0(u32) { return 0; }
+u32 mdecRead1(u32) { return 0; }
+void mdecWrite0(u32) {}
+void mdecWrite1(u32) {}
+u32 gifBookRw(u32) { return 0; }
+
 // ── Category 8: DEV9 / USB / ATA / SMAP / PGIF stubs ──
 // PORTED: Hardware peripherals not used on iOS (Audit Sec 1.2 RED entries)
 
