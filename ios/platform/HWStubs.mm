@@ -360,14 +360,4 @@ namespace R5900 { namespace Interpreter { namespace OpcodeImpl {
 void CACHE() {}
 }}}
 
-// Global variables
-#include "SIO/Memcard/MemoryCardFile.h"
-MemoryCardProtocol g_MemoryCardProtocol;
-#include "SIO/Multitap/MultitapProtocol.h"
-MultitapProtocol g_MultitapArr[2];
-#include "SIF.h"
-sif sif0, sif1, sif2;
-
-// Pad stubs
-namespace Pad { void* GetPad(unsigned char, unsigned char) { return nullptr; } }
-void PadBase::SoftReset() {}
+// Global variables — provided by compiled source files (MemoryCardProtocol.cpp, etc.)
