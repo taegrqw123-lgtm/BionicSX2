@@ -170,6 +170,9 @@ set(SPU2_SOURCES
     src/SPU2/spu2.cpp
     src/SPU2/spu2sys.cpp
     src/SPU2/spu2freeze.cpp
+    src/SIO/Sio.cpp
+    src/SIO/Sio0.cpp
+    src/SIO/Sio2.cpp
     src/SPU2/ADSR.cpp
     src/SPU2/Dma.cpp
     src/SPU2/Mixer.cpp

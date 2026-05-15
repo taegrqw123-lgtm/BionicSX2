@@ -2,8 +2,7 @@
 #include "PrecompiledHeader.h"
 #include "VMManager.h"
 #include "MTVU.h"
-#include "SIO/Sio.h"
-#include "SIO/Sio2.h"
+
 
 // VMManager
 u32 VMManager::GetDiscCRC() { return 0; }
@@ -36,20 +35,3 @@ void VU_Thread::WaitVU() {}
 void VU_Thread::WriteCol(vifStruct&) {}
 void VU_Thread::WriteRow(vifStruct&) {}
 
-// Sio
-Sio g_Sio0;
-Sio2 g_Sio2;
-u16 Sio0::GetBaud() { return 0; }
-u16 Sio0::GetCtrl() { return 0; }
-u16 Sio0::GetMode() { return 0; }
-u8  Sio0::GetRxData() { return 0; }
-u16 Sio0::GetStat() { return 0; }
-void Sio0::Interrupt(Sio0Interrupt) {}
-void Sio0::SetBaud(u16) {}
-void Sio0::SetCtrl(u16) {}
-void Sio0::SetMode(u16) {}
-void Sio0::SetTxData(u8) {}
-u32 Sio2::Read() { return 0; }
-void Sio2::SetCmd(u32, u32) {}
-void Sio2::SetCtrl(u32) {}
-void Sio2::Write(u8) {}
