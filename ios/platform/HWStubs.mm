@@ -327,3 +327,48 @@ int AuthXor() { return 0; }
 // GSVertexSW
 #include "GS/Renderers/SW/GSVertexSW.h"
 void GSVertexSW::InitStatic() {}
+
+// isa_native ISA-specific populate functions
+#include "GS/Renderers/HW/GSRendererHW.h"
+#include "GS/Renderers/SW/GSRendererSW.h"
+#include "GS/Renderers/Common/GSVertexTrace.h"
+void isa_native::makeGSRendererSW(int) {}
+void isa_native::GSRendererHWPopulateFunctions(GSRendererHW&) {}
+void isa_native::GSVertexTracePopulateFunctions(GSVertexTrace&) {}
+
+// StateWrapper
+#include "StateWrapper.h"
+void StateWrapper::Do(bool*) {}
+void StateWrapper::DoBytes(void*, unsigned long) {}
+bool StateWrapper::DoMarker(const char*) { return false; }
+
+// SymbolGuardian
+#include "DebugTools/SymbolGuardian.h"
+void SymbolGuardian::ClearIrxModules() {}
+void SymbolGuardian::ReadWrite(std::function<void(ccc::SymbolDatabase&)>) {}
+
+// USB
+namespace USB {
+int DeviceTypeIndexToName(int) { return 0; }
+int DeviceTypeNameToIndex(std::string_view) { return 0; }
+int GetConfigSection(int) { return 0; }
+}
+
+// RGBA8Image
+struct RGBA8Image { RGBA8Image() = default; RGBA8Image(RGBA8Image&&) = default; bool SaveToFile(const char*, unsigned char) const { return false; } };
+
+// bc7decomp
+namespace bc7decomp { void unpack_bc7(const void*, void*) {} }
+
+// CACHE opcode
+namespace R5900 { namespace Interpreter { namespace OpcodeImpl {
+void CACHE() {}
+}}}
+
+// Global variables
+#include "SIO/Memcard/MemoryCardFile.h"
+MemoryCardProtocol g_MemoryCardProtocol;
+#include "SIO/Multitap/MultitapProtocol.h"
+MultitapProtocol g_MultitapArr[2];
+#include "SIF.h"
+sif sif0, sif1, sif2;

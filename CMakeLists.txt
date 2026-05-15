@@ -64,6 +64,7 @@ find_library(SECURITY_FW        Security        REQUIRED)
 set(PCSX2_CONFIG_SOURCES
     src/Pcsx2Config.cpp
     src/SourceLog.cpp
+    src/StateWrapper.cpp
     src/GS/GSPerfMon.cpp
     # GS core sources added below
     src/GS/GSDrawingContext.cpp
@@ -86,6 +87,7 @@ set(EE_CORE_SOURCES
     src/Interpreter.cpp
     src/Memory.cpp
     src/COP0.cpp
+    src/Cache.cpp
     src/COP2.cpp
     src/Counters.cpp
     src/Dmac.cpp
@@ -173,6 +175,11 @@ set(SPU2_SOURCES
     src/SIO/Sio.cpp
     src/SIO/Sio0.cpp
     src/SIO/Sio2.cpp
+    src/SIO/Memcard/MemoryCardProtocol.cpp
+    src/SIO/Multitap/MultitapProtocol.cpp
+    src/SIO/Pad/Pad.cpp
+    src/SIO/Pad/PadBase.cpp
+    src/SIO/Pad/PadDualshock2.cpp
     src/SPU2/ADSR.cpp
     src/SPU2/Dma.cpp
     src/SPU2/Mixer.cpp
