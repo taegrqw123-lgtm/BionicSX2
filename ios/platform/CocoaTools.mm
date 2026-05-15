@@ -82,7 +82,7 @@ std::optional<std::string> CocoaTools::GetNonTranslocatedBundlePath()
     return [[[NSBundle mainBundle] bundlePath] UTF8String];
 }
 
-bool CocoaTools::MoveToTrash(std::string_view) { return false; }
+std::optional<std::string> CocoaTools::MoveToTrash(std::string_view) { return std::nullopt; }
 bool CocoaTools::DelayedLaunch(std::string_view) { return false; }
 bool CocoaTools::ShowInFinder(std::string_view) { return false; }
 

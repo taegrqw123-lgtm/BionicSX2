@@ -57,7 +57,7 @@ bool StartVM(const char* isoPath)
 
     // Step 4: Initialize GS with Metal backend
     Pcsx2Config::GSOptions gsOptions;
-    if (!GSopen(gsOptions, GSRendererType::Metal, nullptr, 0)) {
+    if (!GSopen(gsOptions, GSRendererType::Metal, nullptr, GSVSyncMode::Disabled, false)) {
         NSLog(@"[BionicSX2] GSopen(Metal) failed");
         return false;
     }
