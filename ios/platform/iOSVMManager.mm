@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 #include "PrecompiledHeader.h"
 #include "VMManager.h"
+#include "Config.h"
 #include "GS/GS.h"
 #include "Memory.h"
 #include "R5900.h"
@@ -30,20 +31,19 @@ bool StartVM(const char* isoPath)
 
     NSLog(@"[BionicSX2] Starting VM...");
 
-    // Step 1: Set EmuConfig flags BEFORE any reset call
-    // Audit Section 2.3-F: newVifDynarec is compile-time const in Vif_Dynarec.h,
-    // but we set it at runtime too as belt-and-suspenders
-    EmuConfig.EE.newVifDynarec       = false;  // CRITICAL — nVif crash fix (Audit Sec 2.3-F)
+    // Step 1: Configure emulator flags BEFORE any reset call
+    // Audit Section 2.3-F: newVifDynaRec is compile-time const in Vif_Dynarec.h
+    // The #ifdef PCSX2_TARGET_IOS fix is already applied at compile time.
+    // At runtime, disable all recompilers to use interpreter paths:
     EmuConfig.Cpu.Recompiler.EnableEE  = false; // Interpreter only — no JIT (Audit Sec 2.2)
     EmuConfig.Cpu.Recompiler.EnableVU0 = false; // Audit Sec 2.2
     EmuConfig.Cpu.Recompiler.EnableVU1 = false; // Audit Sec 2.2
     EmuConfig.Cpu.Recompiler.EnableIOP = false; // Audit Sec 2.3
     EmuConfig.GS.Renderer = GSRendererType::Metal; // Metal only on iOS
 
-    // Step 2: SysMemory::Reset() MUST be called before cpuReset()
+    // Step 2: SysMemory::Allocate() MUST be called before cpuReset()
     // Audit Section 2.3-E: On macOS, SysMemory::Reset() runs at
     // VMManager::StartVM():1525 BEFORE cpuReset() at :1526.
-    // Without this, recWritePtr remains nullptr.
     if (!SysMemory::Allocate()) {
         NSLog(@"[BionicSX2] SysMemory::Allocate() failed");
         return false;
@@ -56,7 +56,8 @@ bool StartVM(const char* isoPath)
     NSLog(@"[BionicSX2] cpuReset() completed");
 
     // Step 4: Initialize GS with Metal backend
-    if (!GSopen(nullptr, "Metal", 0)) {
+    Pcsx2Config::GSOptions gsOptions;
+    if (!GSopen(gsOptions, GSRendererType::Metal, nullptr, 0)) {
         NSLog(@"[BionicSX2] GSopen(Metal) failed");
         return false;
     }
