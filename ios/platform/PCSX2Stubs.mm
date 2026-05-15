@@ -169,8 +169,8 @@ std::vector<std::string> GetMetalAdapterList() { return {}; }
 // ── Audio / CDVD / IPU / SIF / etc. Stubs ──
 
 // CDVD
-void CDVDsys_ChangeSource(CDVD_SourceType) {}
-void CDVDsys_SetFile(CDVD_SourceType, const std::string&) {}
+void CDVDsys_ChangeSource(int) {}
+void CDVDsys_SetFile(int, const std::string&) {}
 void CopyBIOSToMemory() {}
 
 // SIF
