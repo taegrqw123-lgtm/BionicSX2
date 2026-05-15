@@ -363,12 +363,11 @@ int DeviceTypeNameToIndex(std::string_view) { return 0; }
 int GetConfigSection(int) { return 0; }
 }
 
-// FileMcd stubs — using PCSX2 types from header
-#include "SIO/Memcard/MemoryCardFile.h"
-void FileMcd_GetSizeInfo(uint, uint, McdSizeInfo*) {}
-s32 FileMcd_Read(uint, uint, u8*, u32, int) { return 0; }
-s32 FileMcd_Save(uint, uint, const u8*, u32, int) { return 0; }
-s32 FileMcd_EraseBlock(uint, uint, u32) { return 0; }
+// FileMcd stubs — plain types, no header include
+void FileMcd_GetSizeInfo(unsigned int, unsigned int, void*) {}
+int FileMcd_Read(unsigned int, unsigned int, unsigned char*, unsigned int, int) { return 0; }
+int FileMcd_Save(unsigned int, unsigned int, const unsigned char*, unsigned int, int) { return 0; }
+int FileMcd_EraseBlock(unsigned int, unsigned int, unsigned int) { return 0; }
 
 // RGBA8Image and bc7decomp provided by GSRenderer.h includes
 
