@@ -6,6 +6,12 @@
 #include "common/Error.h"
 #include <memory>
 
+std::unique_ptr<AudioStream> AudioStream::CreateStream(AudioBackend, u32,
+    const AudioStreamParameters&, const char*, const char*, bool, Error*)
+{
+    return nullptr;
+}
+
 std::unique_ptr<AudioStream> AudioStream::CreateCubebAudioStream(u32,
     const AudioStreamParameters&, const char*, const char*, bool, Error*)
 {
