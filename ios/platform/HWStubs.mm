@@ -95,8 +95,10 @@ int breakpointTriggered_ = 0;
 int memChecks_ = 0;
 
 // DebugInterface
-int DebugInterface::m_pause_on_entry = 0;
-bool DebugInterface::parseExpression(std::vector<std::pair<u64, u64>>&, u64&, std::string&) { return false; }
+namespace DebugInterface {
+    int m_pause_on_entry = 0;
+    bool parseExpression(std::vector<std::pair<u64, u64>>&, u64&, std::string&) { return false; }
+}
 
 // GSCapture
 namespace GSCapture {
