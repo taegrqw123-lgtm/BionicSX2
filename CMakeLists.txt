@@ -171,17 +171,9 @@ set(IOS_UI_SOURCES
     ios/platform/MetalViewController.mm
 )
 
-# Metal Renderer (Audit Sec 4.1-4.3)
+# Metal Renderer stub (Audit Sec 4.1-4.3 — full port deferred)
 set(METAL_SOURCES
-    metal/MetalRenderer.mm
-    metal/MetalRenderer.h
-    metal/MetalDeviceInfo.mm
-    metal/MetalTexture.mm
-    metal/FrameSync.mm
-)
-
-set(METAL_SHADERS
-    metal/Shaders.metal
+    metal/MetalRendererStub.mm
 )
 
 # ── Main executable target ──
