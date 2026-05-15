@@ -65,6 +65,7 @@ set(PCSX2_CONFIG_SOURCES
     src/Pcsx2Config.cpp
     src/SourceLog.cpp
     src/StateWrapper.cpp
+    src/DebugTools/DisR5900asm.cpp
     src/GS/GSPerfMon.cpp
     # GS core sources added below
     src/GS/GSDrawingContext.cpp
@@ -177,6 +178,7 @@ set(SPU2_SOURCES
     src/SIO/Sio2.cpp
     src/SIO/Memcard/MemoryCardProtocol.cpp
     src/SIO/Multitap/MultitapProtocol.cpp
+    src/SIO/Memcard/MemoryCardFile.cpp
     # Pad sources excluded (drag in SDL3 headers)
     src/SPU2/ADSR.cpp
     src/SPU2/Dma.cpp

@@ -279,7 +279,12 @@ std::string ShiftJIS_ConvertString(const char*, int) { return {}; }
 bool SaveStateBase::FreezeTag(const char*) { return false; }
 void vtlb_DynBackpatchLoadStore(uptr, u32, u32, u32, u32, u32, u8, u8, u8, bool, bool, bool) {}
 
-// MultiISAFunctions — provided by GSXXH.cpp (compiled)
+// MultiISAFunctions — function pointer variables needed by GSXXH.cpp
+namespace MultiISAFunctions {
+u64 (*GSXXH3_64_Long)(const void*, size_t) = nullptr;
+u64 (*GSXXH3_64_Digest)(void*) = nullptr;
+int (*GSXXH3_64_Update)(void*, const void*, size_t) = nullptr;
+}
 
 // Pad
 #include "SIO/Pad/Pad.h"
@@ -341,6 +346,12 @@ bool StateWrapper::DoMarker(const char*) { return false; }
 #include "DebugTools/SymbolGuardian.h"
 void SymbolGuardian::ClearIrxModules() {}
 void SymbolGuardian::ReadWrite(std::function<void(ccc::SymbolDatabase&)>) noexcept {}
+
+// Pad
+#include "SIO/Pad/Pad.h"
+#include "SIO/Pad/PadBase.h"
+PadBase* Pad::GetPad(u8, u8) { return nullptr; }
+void PadBase::SoftReset() {}
 
 // USB
 namespace USB {
