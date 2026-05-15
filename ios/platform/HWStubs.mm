@@ -372,3 +372,7 @@ MemoryCardProtocol g_MemoryCardProtocol;
 MultitapProtocol g_MultitapArr[2];
 #include "SIF.h"
 sif sif0, sif1, sif2;
+
+// Pad stubs
+namespace Pad { void* GetPad(unsigned char, unsigned char) { return nullptr; } }
+void PadBase::SoftReset() {}
