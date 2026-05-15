@@ -65,10 +65,7 @@ set(PCSX2_CONFIG_SOURCES
     src/Pcsx2Config.cpp
     src/SourceLog.cpp
     src/GS/GSPerfMon.cpp
-    # GSDump.cpp and GSPng.cpp excluded (need LZMA and libpng headers)
-    src/GS/GSState.cpp
-    src/GS/GSClut.cpp
-    src/GS/GSLocalMemory.cpp
+    # GS core sources added below
     src/GS/GSDrawingContext.cpp
     src/GS/GSDrawingEnvironment.cpp
     src/GS/GSRingHeap.cpp
@@ -147,6 +144,24 @@ set(GS_CORE_SOURCES
     src/GS/Renderers/Common/GSTexture.cpp
     src/GS/Renderers/Common/GSVertexTrace.cpp
     src/GS/Renderers/HW/GSRendererHW.cpp
+    src/GS/Renderers/HW/GSTextureCache.cpp
+    src/GS/Renderers/HW/GSHwHack.cpp
+    src/GS/Renderers/HW/GSTextureReplacements.cpp
+    src/GS/Renderers/HW/GSTextureReplacementLoaders.cpp
+    src/GS/Renderers/HW/GSRendererHWMultiISA.cpp
+    src/GS/GSState.cpp
+    src/GS/GSLocalMemoryMultiISA.cpp
+    src/GS/GSDirtyRect.cpp
+    src/GS/GSRingHeap.cpp
+    src/GS/GSBlock.cpp
+    src/GS/GSClut.cpp
+    src/GS/GSUtil.cpp
+    src/GS/GSTables.cpp
+    src/GS/GSXXH.cpp
+    src/GS/GSDrawingContext.cpp
+    src/GS/GSDrawingEnvironment.cpp
+    src/GS/GSLocalMemory.cpp
+    src/GS/GSVector.cpp
     src/GS/Renderers/Null/GSRendererNull.cpp
 )
 

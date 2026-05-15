@@ -132,6 +132,8 @@ void* CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u
 void* CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
 void* CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
 void VSync(int, bool, const GSPrivRegSet*) {}
+void ReadFIFO(unsigned int) {}
+void Transfer(int, const unsigned char*, unsigned long) {}
 }
 
 // GSDumpReplayer
@@ -144,4 +146,9 @@ void RenderUI() {}
 // FullscreenUI
 namespace FullscreenUI {
 void Render() {}
+}
+
+// GSPng
+namespace GSPng {
+bool Save(int, const std::string&, const unsigned char*, int, int, int, int, bool) { return false; }
 }
