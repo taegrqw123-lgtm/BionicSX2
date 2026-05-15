@@ -144,9 +144,9 @@ set(SPU2_SOURCES
 
 # Shared memory management (Audit Sec 0-D, 6.2)
 set(IOS_MEMORY_SOURCES
-    ios/platform/HostSys_iOS.cpp
+    ios/platform/HostSys_iOS.mm
     src/common/Linux/LnxHostSys.cpp
-    src/common/Darwin/DarwinMisc.cpp
+    ios/platform/PageFaultHandler.cpp
 )
 
 # Threading (Audit Sec 5.3)

@@ -4,6 +4,7 @@
 // Replaces mmap/mprotect with vm_allocate/vm_protect per Audit Sec 6.2
 
 #include "PrecompiledHeader.h"
+#import <Foundation/Foundation.h>
 #include "common/Assertions.h"
 #include "common/BitUtils.h"
 #include "common/Console.h"
