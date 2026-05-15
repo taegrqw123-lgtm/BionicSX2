@@ -256,6 +256,7 @@ target_include_directories(BionicSX2 PRIVATE
     ${CMAKE_SOURCE_DIR}/src/3rdparty/imgui/include
     ${CMAKE_SOURCE_DIR}/src/3rdparty
     ${CMAKE_SOURCE_DIR}/src/3rdparty/include
+    ${CMAKE_SOURCE_DIR}/src/3rdparty/freesurround/include
     "${IOS_DEPS}/include"
 )
 
