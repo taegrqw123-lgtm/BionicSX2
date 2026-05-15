@@ -92,10 +92,7 @@ bool FileMcd_IsMultitapSlot(u32) { return false; }
 // AutoEject
 namespace AutoEject { bool CountDownTicks() { return false; } }
 
-// CBreakPoints
-int breakpointTriggeredCpu_ = 0;
-int breakpointTriggered_ = 0;
-int memChecks_ = 0;
+// CBreakPoints (static member definitions in BreakPointStubs.cpp)
 namespace CBreakPoints {
 void AddBreakPoint(BreakPointCpu, unsigned int, bool, bool, bool) {}
 void CheckSkipFirst(BreakPointCpu, unsigned int) {}
@@ -149,9 +146,8 @@ void Render() {}
 }
 
 // GSPng
-namespace GSPng {
-bool Save(int, const std::string&, const unsigned char*, int, int, int, int, bool) { return false; }
-}
+#include "GS/GSPng.h"
+bool GSPng::Save(GSPng::Format, const std::string&, const u8*, int, int, int, int, bool) { return false; }
 
 // Texture decompression
 void DecompressBlockBC1(unsigned int, unsigned int, unsigned int, const unsigned char*, unsigned char*) {}
@@ -201,20 +197,163 @@ namespace MemcardBusy {
 void Decrement() {}
 }
 
+// VMManager stubs
+#include "VMManager.h"
+u32 VMManager::GetDiscCRC() { return 0; }
+std::string VMManager::GetDiscSerial() { return {}; }
+GSVSyncMode VMManager::GetEffectiveVSyncMode() { return GSVSyncMode::Disabled; }
+VMManager::State VMManager::GetState() { return VMManager::State::Shutdown; }
+float VMManager::GetTargetSpeed() { return 1.0f; }
+std::string VMManager::GetTitle(bool) { return {}; }
+bool VMManager::HasValidVM() { return false; }
+bool VMManager::IsTargetSpeedAdjustedToHost() { return false; }
+void VMManager::SetPaused(bool) {}
+bool VMManager::ShouldAllowPresentThrottle() { return false; }
+bool VMManager::Internal::HasBootedELF() { return false; }
+std::string VMManager::Internal::GetELFOverride() { return {}; }
+void VMManager::Internal::DisableFastBoot() {}
+void VMManager::Internal::FrameRateChanged() {}
+void VMManager::Internal::VSyncOnCPUThread() {}
+bool VMManager::Internal::IsFastBootInProgress() { return false; }
+void VMManager::Internal::PollInputOnCPUThread() {}
+void VMManager::Internal::ELFLoadingOnCPUThread(const std::string&) {}
+bool VMManager::Internal::IsExecutionInterrupted() { return false; }
+u32 VMManager::Internal::GetCurrentELFEntryPoint() { return 0; }
+void VMManager::Internal::EntryPointCompilingOnCPUThread() {}
+void VMManager::Internal::Throttle() {}
+
+// VU_Thread stubs
+#include "MTVU.h"
+u32 VU_Thread::Get_MTVUChanges() { return 0; }
+void VU_Thread::WaitVU() {}
+void VU_Thread::WriteCol(vifStruct&) {}
+void VU_Thread::WriteRow(vifStruct&) {}
+vu1Thread vu1Thread::m_vu1Thread;
+
+// Sio/Sio2 member stubs
+#include "SIO/Sio.h"
+#include "SIO/Sio2.h"
+Sio g_Sio0;
+Sio2 g_Sio2;
+u16 Sio0::GetBaud() { return 0; }
+u16 Sio0::GetCtrl() { return 0; }
+u16 Sio0::GetMode() { return 0; }
+u8  Sio0::GetRxData() { return 0; }
+u16 Sio0::GetStat() { return 0; }
+void Sio0::Interrupt(Sio0Interrupt) {}
+void Sio0::SetBaud(u16) {}
+void Sio0::SetCtrl(u16) {}
+void Sio0::SetMode(u16) {}
+void Sio0::SetTxData(u8) {}
+u32 Sio2::Read() { return 0; }
+void Sio2::SetCmd(u32, u32) {}
+void Sio2::SetCtrl(u32) {}
+void Sio2::Write(u8) {}
+
+// CDVD stubs
+void cdvdGetDiscInfo(std::string*, std::string*, std::string*, u32*, int) {}
+bool cdvdSectorReady() { return false; }
+void cdrReadInterrupt() {}
+void cdvdReadInterrupt() {}
+void cdvdRead(u8) {}
+void cdvdReset() {}
+bool cdvdVsync() { return false; }
+void cdvdWrite(u8, u8) {}
+void cdrRead0() {}
+void cdrRead1() {}
+void cdrRead2() {}
+void cdrRead3() {}
+void cdrReset() {}
+void cdrWrite0(u8) {}
+void cdrWrite1(u8) {}
+void cdrWrite2(u8) {}
+void cdrWrite3(u8) {}
+
+// GS stubs
+void gsIrq() {}
+void gsPostVsyncStart() {}
+u8  gsRead8(u32) { return 0; }
+u16 gsRead16(u32) { return 0; }
+u32 gsRead32(u32) { return 0; }
+u64 gsRead64(u32) { return 0; }
+void gsReset() {}
+void gsWrite8(u32, u8) {}
+void gsWrite16(u32, u16) {}
+void gsWrite32(u32, u32) {}
+void gsWrite64_generic(u32, u64) {}
+void gsWrite64_page_00(u32, u64) {}
+void gsWrite64_page_01(u32, u64) {}
+void gsWrite128_generic(u32, r128) {}
+void gsWrite128_page_00(u32, r128) {}
+void gsWrite128_page_01(u32, r128) {}
+
+// DMA/IPU stubs
+void dmaIPU0() {}
+void dmaIPU1() {}
+void dmaSIF0() {}
+void dmaSIF1() {}
+void dmaSIF2() {}
+void SIF0Dma() {}
+void SIF1Dma() {}
+void sifReset() {}
+void psxDma0(u32, u32, u32) {}
+void psxDma1(u32, u32, u32) {}
+void psxDma2(u32, u32, u32) {}
+void psxDma3(u32, u32, u32) {}
+
+// IOP stubs
+void USBreset() {}
+void mdecInit() {}
+void mdecRead0() {}
+void mdecRead1() {}
+void ipuReset() {}
+void psxGPUr(int) { return; }
+void psxGPUw(int, u32) {}
+
+// fastjmp stubs
+#include "common/FastJmp.h"
+void fastjmp_jmp(fastjmp_buf) {}
+void fastjmp_set(fastjmp_buf) {}
+
+// RGBA8Image stubs
+struct RGBA8Image {
+    RGBA8Image() = default;
+    RGBA8Image(RGBA8Image&&) = default;
+    bool SaveToFile(const char*, u8) const { return false; }
+};
+
+// bc7decomp
+namespace bc7decomp {
+void unpack_bc7(const void*, void*) {}
+}
+
+// Other stubs
+void hwRead16_page_0F_INTC_HACK(u32) {}
+void hwRead32_page_0F_INTC_HACK(u32) {}
+void __clear_cache(void*, void*) {}
+void writebackCache() {}
+void ShiftJIS_ConvertString(const char*) {}
+void ShiftJIS_ConvertString(const char*, int) {}
+bool SaveStateBase::FreezeTag(const char*) { return false; }
+void GSCapture::BeginCapture(float, GSVector2i, float, const std::string&) {}
+void SymbolGuardian::ClearIrxModules() {}
+void SymbolGuardian::ReadWrite(std::function<void(ccc::SymbolDatabase&)>) {}
+void standardizeBreakpointAddress(u32&) {}
+void vtlb_DynBackpatchLoadStore(uptr, u32, u32, u32, u8, u8, u8, bool, bool, bool) {}
+
 // MultiISAFunctions
 namespace MultiISAFunctions {
-void* GSXXH3_64_Digest() { return nullptr; }
-void GSXXH3_64_Long() {}
-void GSXXH3_64_Update() {}
+u64 GSXXH3_64_Long(const void*, size_t) { return 0; }
+u64 GSXXH3_64_Digest(void*) { return 0; }
+int GSXXH3_64_Update(void*, const void*, size_t) { return 0; }
 }
 
 // Pad
-namespace Pad {
-int GetConfigSection(unsigned int) { return 0; }
-int GetControllerInfo(int) { return 0; }
-int GetControllerInfoByName(std::string_view) { return 0; }
-int GetDefaultPadType(unsigned int) { return 0; }
-}
+#include "SIO/Pad/Pad.h"
+int Pad::GetConfigSection(unsigned int) { return 0; }
+const Pad::ControllerInfo* Pad::GetControllerInfo(Pad::ControllerType) { return nullptr; }
+const Pad::ControllerInfo* Pad::GetControllerInfoByName(std::string_view) { return nullptr; }
+Pad::ControllerType Pad::GetDefaultPadType(unsigned int) { return Pad::ControllerType(0); }
 
 // PerformanceMetrics
 namespace PerformanceMetrics {

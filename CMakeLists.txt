@@ -230,6 +230,11 @@ set(CCC_SOURCES
     src/3rdparty/ccc/src/ccc/util.cpp
 )
 
+# fmt library sources
+set(FMT_SOURCES
+    src/3rdparty/fmt/src/format.cc
+)
+
 # Host abstraction sources (AudioStream.cpp excluded — factory methods stubbed)
 
 # Threading (Audit Sec 5.3)
@@ -247,6 +252,7 @@ set(IOS_PLATFORM_SOURCES
     ios/platform/PCSX2Stubs.mm
     ios/platform/AudioStreamStubs.mm
     ios/platform/HWStubs.mm
+    ios/platform/BreakPointStubs.cpp
 )
 
 # UIKit frontend (Audit Sec 11.2 H3)
@@ -271,6 +277,7 @@ add_executable(BionicSX2
     ${IOS_MEMORY_SOURCES}
     ${COMMON_LIB_SOURCES}
     ${HOST_SOURCES}
+    ${FMT_SOURCES}
     ${CCC_SOURCES}
     ${IOS_THREADING_SOURCES}
     ${IOS_PLATFORM_SOURCES}
