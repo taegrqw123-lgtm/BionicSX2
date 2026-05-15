@@ -62,6 +62,7 @@ find_library(SECURITY_FW        Security        REQUIRED)
 # Pcsx2Config (defines EmuConfig global variable)
 set(PCSX2_CONFIG_SOURCES
     src/Pcsx2Config.cpp
+    src/DebugTools/Debug.cpp
 )
 
 # Audit Sec 2.1: EE Core — GREEN

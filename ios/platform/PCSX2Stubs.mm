@@ -224,11 +224,9 @@ void standardizeBreakpointAddress(u32&) {}
 // EnableFMV flag — needed by Counters.cpp and IPU code
 bool EnableFMV = false;
 
-// Console logging globals — defined in BiosTools.cpp / Console.cpp
-#include "common/Console.h"
+// Console logging globals — defined in BiosTools.cpp
 bool AllowParams1 = false;
 bool AllowParams2 = false;
-ConsoleLogObject ConsoleLogging;
 
 // HostSys
 #include "common/HostSys.h"
