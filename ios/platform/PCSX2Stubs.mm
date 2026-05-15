@@ -185,7 +185,7 @@ void ipu1Interrupt() {}
 void ipuCMDProcess() {}
 
 // GS
-void gsSetVideoMode(GS_VideoMode) {}
+void gsSetVideoMode(int) {}
 
 // CDVD IRQ
 void cdrInterrupt() {}
@@ -224,18 +224,12 @@ u32 FWread32(u32) { return 0; }
 void FWwrite32(u32, u32) {}
 void FWIrqHandler() {}
 
-// Cache
-#include "VU.h"
+// Cache (readCache* are defined in Cache.cpp, only writeCache stubs needed here)
 void writeCache8(u32, u8, bool) {}
 void writeCache16(u32, u16, bool) {}
 void writeCache32(u32, u32, bool) {}
 void writeCache64(u32, u64, bool) {}
 void writeCache128(u32, u128, bool) {}
-u8  readCache8(u32, bool) { return 0; }
-u16 readCache16(u32, bool) { return 0; }
-u32 readCache32(u32, bool) { return 0; }
-u64 readCache64(u32, bool) { return 0; }
-u128 readCache128(u32, bool) { u128 v={}; return v; }
 
 // FIFO
 void ReadFIFO_VIF1(u128*) {}
