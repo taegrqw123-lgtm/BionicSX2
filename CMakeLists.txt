@@ -65,6 +65,19 @@ set(PCSX2_CONFIG_SOURCES
     src/Pcsx2Config.cpp
     src/SourceLog.cpp
     src/GS/GSPerfMon.cpp
+    src/GS/GSDump.cpp
+    src/GS/GSPng.cpp
+    src/GS/GSState.cpp
+    src/GS/GSClut.cpp
+    src/GS/GSLocalMemory.cpp
+    src/GS/GSDrawingContext.cpp
+    src/GS/GSDrawingEnvironment.cpp
+    src/GS/GSRingHeap.cpp
+    src/GS/GSBlock.cpp
+    src/GS/GSXXH.cpp
+    src/GS/GSUtil.cpp
+    src/GS/GSTables.cpp
+    src/GS/MultiISA.cpp
 )
 
 # Audit Sec 2.1: EE Core — GREEN
@@ -134,6 +147,8 @@ set(GS_CORE_SOURCES
     src/GS/Renderers/Common/GSRenderer.cpp
     src/GS/Renderers/Common/GSTexture.cpp
     src/GS/Renderers/Common/GSVertexTrace.cpp
+    src/GS/Renderers/HW/GSRendererHW.cpp
+    src/GS/Renderers/Null/GSRendererNull.cpp
 )
 
 # Audit Sec 2.5: SPU2 — GREEN
