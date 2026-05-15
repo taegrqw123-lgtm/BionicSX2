@@ -7,7 +7,8 @@
 enum class CDVD_SourceType : unsigned char;
 enum class GS_VideoMode : int;
 class GSTexture;
-struct GSVector2i { int x, y; };
+#include "GS/GSVector.h"
+#include "DebugTools/Breakpoints.h"
 
 // CDVD
 void CDVDsys_ChangeSource(CDVD_SourceType) {}
@@ -93,6 +94,14 @@ namespace AutoEject { bool CountDownTicks() { return false; } }
 int breakpointTriggeredCpu_ = 0;
 int breakpointTriggered_ = 0;
 int memChecks_ = 0;
+namespace CBreakPoints {
+void AddBreakPoint(BreakPointCpu, unsigned int, bool, bool, bool) {}
+void CheckSkipFirst(BreakPointCpu, unsigned int) {}
+void ClearSkipFirst(BreakPointCpu) {}
+BreakPointCpu GetBreakPointCondition(BreakPointCpu, unsigned int) { return BreakPointCpu(0); }
+std::vector<MemCheck> GetMemChecks(BreakPointCpu) { return {}; }
+bool IsAddressBreakPoint(BreakPointCpu, unsigned int) { return false; }
+}
 
 // DebugInterface
 namespace DebugInterface {
@@ -126,4 +135,9 @@ namespace GSDumpReplayer {
 bool IsReplayingDump() { return false; }
 bool IsRunner() { return false; }
 void RenderUI() {}
+}
+
+// FullscreenUI
+namespace FullscreenUI {
+void Render() {}
 }

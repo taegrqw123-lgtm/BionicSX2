@@ -64,6 +64,7 @@ find_library(SECURITY_FW        Security        REQUIRED)
 set(PCSX2_CONFIG_SOURCES
     src/Pcsx2Config.cpp
     src/SourceLog.cpp
+    src/GS/GSPerfMon.cpp
 )
 
 # Audit Sec 2.1: EE Core — GREEN
