@@ -59,6 +59,11 @@ find_library(SECURITY_FW        Security        REQUIRED)
 
 # ── Source groups ──
 
+# Pcsx2Config (defines EmuConfig global variable)
+set(PCSX2_CONFIG_SOURCES
+    src/Pcsx2Config.cpp
+)
+
 # Audit Sec 2.1: EE Core — GREEN
 set(EE_CORE_SOURCES
     src/R5900.cpp
@@ -224,6 +229,7 @@ set(METAL_SOURCES
 
 # ── Main executable target ──
 add_executable(BionicSX2
+    ${PCSX2_CONFIG_SOURCES}
     ${EE_CORE_SOURCES}
     ${VU_SOURCES}
     ${IOP_SOURCES}
@@ -237,7 +243,6 @@ add_executable(BionicSX2
     ${IOS_PLATFORM_SOURCES}
     ${IOS_UI_SOURCES}
     ${METAL_SOURCES}
-    ${METAL_SHADERS}
 )
 
 # ── Include directories ──
