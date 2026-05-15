@@ -81,6 +81,8 @@ set(EE_CORE_SOURCES
     src/R5900.cpp
     src/R5900OpcodeImpl.cpp
     src/R5900OpcodeTables.cpp
+    src/MMI.cpp
+    src/COP2.cpp
     src/Interpreter.cpp
     src/Memory.cpp
     src/COP0.cpp
