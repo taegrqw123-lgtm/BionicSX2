@@ -82,7 +82,7 @@ bool FileMcd_IsMultitapSlot(unsigned int) { return false; }
 
 // ── GSCapture stubs ──
 namespace GSCapture {
-bool BeginCapture(float, class GSVector2i, float, const std::string&) { return false; }
+bool BeginCapture(float, int, float, const std::string&) { return false; }
 void DeliverAudioPacket(const float*) {}
 void DeliverVideoFrame(class GSTexture*) {}
 void EndCapture() {}
