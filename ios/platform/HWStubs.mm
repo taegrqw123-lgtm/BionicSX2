@@ -8,7 +8,9 @@ enum class CDVD_SourceType : unsigned char;
 enum class GS_VideoMode : int;
 class GSTexture;
 #include "GS/GSVector.h"
-#include "DebugTools/Breakpoints.h"
+// BreakPointCpu forward declaration
+enum class BreakPointCpu : unsigned char;
+struct MemCheck { unsigned long long start; unsigned long long end; unsigned int cond; unsigned int result; }; // simplified
 
 // CDVD
 void CDVDsys_ChangeSource(CDVD_SourceType) {}
