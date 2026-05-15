@@ -200,3 +200,25 @@ void WindowResized() {}
 namespace MemcardBusy {
 void Decrement() {}
 }
+
+// MultiISAFunctions
+namespace MultiISAFunctions {
+void* GSXXH3_64_Digest() { return nullptr; }
+void GSXXH3_64_Long() {}
+void GSXXH3_64_Update() {}
+}
+
+// Pad
+namespace Pad {
+int GetConfigSection(unsigned int) { return 0; }
+int GetControllerInfo(int) { return 0; }
+int GetControllerInfoByName(std::string_view) { return 0; }
+int GetDefaultPadType(unsigned int) { return 0; }
+}
+
+// PerformanceMetrics
+namespace PerformanceMetrics {
+int GetInternalFPSMethod() { return 0; }
+void OnGPUPresent(float) {}
+void Update(bool, bool, bool) {}
+}
