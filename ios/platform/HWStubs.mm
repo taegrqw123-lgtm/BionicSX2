@@ -8,6 +8,7 @@ enum class CDVD_SourceType : unsigned char;
 enum class GS_VideoMode : int;
 class GSTexture;
 #include "GS/GSVector.h"
+#include "common/SingleRegisterTypes.h"
 // BreakPointCpu forward declaration
 enum class BreakPointCpu : unsigned char;
 struct MemCheck { unsigned long long start; unsigned long long end; unsigned int cond; unsigned int result; }; // simplified
@@ -122,13 +123,11 @@ bool IsCapturingVideo() { return false; }
 }
 
 // GSDumpBase stubs
-struct freezeData { int size; unsigned char* data; };
-struct GSPrivRegSet { unsigned char dummy; };
 namespace GSDumpBase {
-void* CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
-void* CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
-void* CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
-void VSync(int, bool, const GSPrivRegSet*) {}
+void* CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
+void* CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
+void* CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
+void VSync(int, bool, const void*) {}
 void ReadFIFO(unsigned int) {}
 void Transfer(int, const unsigned char*, unsigned long) {}
 }
