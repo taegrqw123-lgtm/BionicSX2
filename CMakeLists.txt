@@ -149,7 +149,7 @@ set(GS_CORE_SOURCES
     src/GS/Renderers/HW/GSTextureReplacements.cpp
     src/GS/GSState.cpp
     src/GS/GSLocalMemoryMultiISA.cpp
-    src/GS/GSDirtyRect.cpp
+    src/GS/Renderers/Common/GSDirtyRect.cpp
     src/GS/GSRingHeap.cpp
     src/GS/GSBlock.cpp
     src/GS/GSClut.cpp
