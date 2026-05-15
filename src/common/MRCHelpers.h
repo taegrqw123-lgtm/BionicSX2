@@ -1,9 +1,7 @@
 // SPDX-FileCopyrightText: 2002-2026 PCSX2 Dev Team
 // SPDX-License-Identifier: GPL-3.0+
 
-#ifndef __OBJC__
-	#error This header is for use with Objective-C++ only.
-#endif
+#pragma once
 
 #if __has_feature(objc_arc)
 	#error This file is for manual reference counting!  Compile without -fobjc-arc

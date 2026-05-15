@@ -17,7 +17,6 @@
 #include "GS/Renderers/Common/GSRenderer.h"
 #include "GS/GS.h"
 #include "GS/GSExtra.h"
-#include "common/Align.h"
 #include "common/Assertions.h"
 #include "common/BitUtils.h"
 #include "common/Console.h"
