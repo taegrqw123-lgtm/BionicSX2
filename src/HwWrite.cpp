@@ -1,32 +1,62 @@
-// BionicSX2 iOS — Stub HwWrite.cpp
-// Provides explicit template instantiations for all hwWrite* pages
+// BionicSX2 iOS — Stub HwWrite.cpp with full page instantiations
 #include "PrecompiledHeader.h"
 #include "MemoryTypes.h"
 #include "ps2/HwInternal.h"
 
-template<uint page> void hwWrite8(u32 mem, mem8_t val) {}
-template<uint page> void hwWrite16(u32 mem, mem16_t val) {}
-template<uint page> void hwWrite32(u32 mem, mem32_t val) {}
-template<uint page> void hwWrite64(u32 mem, mem64_t val) {}
-template<uint page> void TAKES_R128 hwWrite128(u32 mem, r128 val) {}
+template<uint page> void hwWrite8(u32, mem8_t) {}
+template<uint page> void hwWrite16(u32, mem16_t) {}
+template<uint page> void hwWrite32(u32, mem32_t) {}
+template<uint page> void hwWrite64(u32, mem64_t) {}
+template<uint page> void TAKES_R128 hwWrite128(u32, r128) {}
 
-template void hwWrite8<0x00>(u32, mem8_t);
-template void hwWrite16<0x00>(u32, mem16_t);
-template void hwWrite32<0x00>(u32, mem32_t);
-template void hwWrite64<0x00>(u32, mem64_t);
-template void TAKES_R128 hwWrite128<0x00>(u32, r128);
-template void TAKES_R128 hwWrite128<0x01>(u32, r128);
-template void TAKES_R128 hwWrite128<0x02>(u32, r128);
-template void TAKES_R128 hwWrite128<0x03>(u32, r128);
-template void TAKES_R128 hwWrite128<0x04>(u32, r128);
-template void TAKES_R128 hwWrite128<0x05>(u32, r128);
-template void TAKES_R128 hwWrite128<0x06>(u32, r128);
-template void TAKES_R128 hwWrite128<0x07>(u32, r128);
-template void TAKES_R128 hwWrite128<0x08>(u32, r128);
-template void TAKES_R128 hwWrite128<0x09>(u32, r128);
-template void TAKES_R128 hwWrite128<0x0A>(u32, r128);
-template void TAKES_R128 hwWrite128<0x0B>(u32, r128);
-template void TAKES_R128 hwWrite128<0x0C>(u32, r128);
-template void TAKES_R128 hwWrite128<0x0D>(u32, r128);
-template void TAKES_R128 hwWrite128<0x0E>(u32, r128);
-template void TAKES_R128 hwWrite128<0x0F>(u32, r128);
+#define INST_P8(name) template void name<0u>(u32, mem8_t); template void name<1u>(u32, mem8_t); \
+  template void name<2u>(u32, mem8_t); template void name<3u>(u32, mem8_t); \
+  template void name<4u>(u32, mem8_t); template void name<5u>(u32, mem8_t); \
+  template void name<6u>(u32, mem8_t); template void name<7u>(u32, mem8_t); \
+  template void name<8u>(u32, mem8_t); template void name<9u>(u32, mem8_t); \
+  template void name<10u>(u32, mem8_t); template void name<11u>(u32, mem8_t); \
+  template void name<12u>(u32, mem8_t); template void name<13u>(u32, mem8_t); \
+  template void name<14u>(u32, mem8_t); template void name<15u>(u32, mem8_t);
+
+#define INST_P16(name) template void name<0u>(u32, mem16_t); template void name<1u>(u32, mem16_t); \
+  template void name<2u>(u32, mem16_t); template void name<3u>(u32, mem16_t); \
+  template void name<4u>(u32, mem16_t); template void name<5u>(u32, mem16_t); \
+  template void name<6u>(u32, mem16_t); template void name<7u>(u32, mem16_t); \
+  template void name<8u>(u32, mem16_t); template void name<9u>(u32, mem16_t); \
+  template void name<10u>(u32, mem16_t); template void name<11u>(u32, mem16_t); \
+  template void name<12u>(u32, mem16_t); template void name<13u>(u32, mem16_t); \
+  template void name<14u>(u32, mem16_t); template void name<15u>(u32, mem16_t);
+
+#define INST_P32(name) template void name<0u>(u32, mem32_t); template void name<1u>(u32, mem32_t); \
+  template void name<2u>(u32, mem32_t); template void name<3u>(u32, mem32_t); \
+  template void name<4u>(u32, mem32_t); template void name<5u>(u32, mem32_t); \
+  template void name<6u>(u32, mem32_t); template void name<7u>(u32, mem32_t); \
+  template void name<8u>(u32, mem32_t); template void name<9u>(u32, mem32_t); \
+  template void name<10u>(u32, mem32_t); template void name<11u>(u32, mem32_t); \
+  template void name<12u>(u32, mem32_t); template void name<13u>(u32, mem32_t); \
+  template void name<14u>(u32, mem32_t); template void name<15u>(u32, mem32_t);
+
+#define INST_P64(name) template void name<0u>(u32, mem64_t); template void name<1u>(u32, mem64_t); \
+  template void name<2u>(u32, mem64_t); template void name<3u>(u32, mem64_t); \
+  template void name<4u>(u32, mem64_t); template void name<5u>(u32, mem64_t); \
+  template void name<6u>(u32, mem64_t); template void name<7u>(u32, mem64_t); \
+  template void name<8u>(u32, mem64_t); template void name<9u>(u32, mem64_t); \
+  template void name<10u>(u32, mem64_t); template void name<11u>(u32, mem64_t); \
+  template void name<12u>(u32, mem64_t); template void name<13u>(u32, mem64_t); \
+  template void name<14u>(u32, mem64_t); template void name<15u>(u32, mem64_t);
+
+#define INST_P128(name) template void TAKES_R128 name<0u>(u32, r128); \
+  template void TAKES_R128 name<1u>(u32, r128); template void TAKES_R128 name<2u>(u32, r128); \
+  template void TAKES_R128 name<3u>(u32, r128); template void TAKES_R128 name<4u>(u32, r128); \
+  template void TAKES_R128 name<5u>(u32, r128); template void TAKES_R128 name<6u>(u32, r128); \
+  template void TAKES_R128 name<7u>(u32, r128); template void TAKES_R128 name<8u>(u32, r128); \
+  template void TAKES_R128 name<9u>(u32, r128); template void TAKES_R128 name<10u>(u32, r128); \
+  template void TAKES_R128 name<11u>(u32, r128); template void TAKES_R128 name<12u>(u32, r128); \
+  template void TAKES_R128 name<13u>(u32, r128); template void TAKES_R128 name<14u>(u32, r128); \
+  template void TAKES_R128 name<15u>(u32, r128);
+
+INST_P8(hwWrite8)
+INST_P16(hwWrite16)
+INST_P32(hwWrite32)
+INST_P64(hwWrite64)
+INST_P128(hwWrite128)
