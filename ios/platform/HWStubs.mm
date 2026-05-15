@@ -1,90 +1,107 @@
-// BionicSX2 iOS — Comprehensive HW I/O stubs for link resolution
-// Provides stub implementations for all device I/O functions referenced by HwRead/HwWrite
-
+// BionicSX2 iOS — HW I/O stubs with exact type matching from PCSX2 headers
 #include "PrecompiledHeader.h"
+#include "CDVD/CDVD.h"
+#include "DebugTools/Breakpoints.h"
+#include "DebugTools/DebugInterface.h"
+#include "SIO/Memcard/MemoryCardFile.h"
+#include "GS/GS.h"
+#include "GSDumpReplayer.h"
+#include "common/HeterogeneousContainers.h"
 
-// ── CDVD stubs ──
-void CDVDsys_ChangeSource(int) {}
-void CDVDsys_SetFile(int, const std::string&) {}
+// CDVD
+void CDVDsys_ChangeSource(CDVD_SourceType) {}
+void CDVDsys_SetFile(CDVD_SourceType, std::string) {}
 void CopyBIOSToMemory() {}
 
-// ── SIF stubs ──
+// SIF
 void EEsif0Interrupt() {}
 void EEsif1Interrupt() {}
 void sif0Interrupt() {}
 void sif1Interrupt() {}
 void sif2Interrupt() {}
 
-// ── IPU stubs ──
+// IPU
 void ipu0Interrupt() {}
 void ipu1Interrupt() {}
 void ipuCMDProcess() {}
 
-// ── GS stubs ──
-void gsSetVideoMode(int) {}
+// GS
+void gsSetVideoMode(GS_VideoMode) {}
 
-// ── CDVD IRQ stubs ──
+// CDVD IRQ
 void cdrInterrupt() {}
 void cdvdActionInterrupt() {}
 
-// ── DEV9 stubs ──
+// DEV9
 void DEV9irqHandler() {}
-void DEV9async(unsigned int) {}
-unsigned char DEV9read8(unsigned int) { return 0; }
-unsigned short DEV9read16(unsigned int) { return 0; }
-unsigned int DEV9read32(unsigned int) { return 0; }
-void DEV9readDMA8Mem(unsigned int*, int) {}
-void DEV9write8(unsigned int, unsigned char) {}
-void DEV9write16(unsigned int, unsigned short) {}
-void DEV9write32(unsigned int, unsigned int) {}
-void DEV9writeDMA8Mem(unsigned int*, int) {}
+void DEV9async(u32) {}
+u8 DEV9read8(u32) { return 0; }
+u16 DEV9read16(u32) { return 0; }
+u32 DEV9read32(u32) { return 0; }
+void DEV9readDMA8Mem(u32*, int) {}
+void DEV9write8(u32, u8) {}
+void DEV9write16(u32, u16) {}
+void DEV9write32(u32, u32) {}
+void DEV9writeDMA8Mem(u32*, int) {}
 
-// ── USB stubs ──
+// USB
 void USBirqHandler() {}
-void USBasync(unsigned int) {}
-unsigned char USBread8(unsigned int) { return 0; }
-unsigned short USBread16(unsigned int) { return 0; }
-unsigned int USBread32(unsigned int) { return 0; }
-void USBwrite8(unsigned int, unsigned char) {}
-void USBwrite16(unsigned int, unsigned short) {}
-void USBwrite32(unsigned int, unsigned int) {}
+void USBasync(u32) {}
+u8 USBread8(u32) { return 0; }
+u16 USBread16(u32) { return 0; }
+u32 USBread32(u32) { return 0; }
+void USBwrite8(u32, u8) {}
+void USBwrite16(u32, u16) {}
+void USBwrite32(u32, u32) {}
 
-// ── PGIF stubs ──
-void PGIFrQword(unsigned int, void*) {}
-void PGIFwQword(unsigned int, void*) {}
-unsigned int PGIFr(unsigned int) { return 0; }
-void PGIFw(unsigned int, unsigned int) {}
+// PGIF
+void PGIFrQword(u32, void*) {}
+void PGIFwQword(u32, void*) {}
+u32 PGIFr(u32) { return 0; }
+void PGIFw(u32, u32) {}
 void pgifInit() {}
 
-// ── FW stubs ──
-unsigned int FWread32(unsigned int) { return 0; }
-void FWwrite32(unsigned int, unsigned int) {}
+// FW
+u32 FWread32(u32) { return 0; }
+void FWwrite32(u32, u32) {}
 void FWIrqHandler() {}
 
-// ── Cache stubs ──
-void writeCache8(unsigned int, unsigned char, bool) {}
-void writeCache16(unsigned int, unsigned short, bool) {}
-void writeCache32(unsigned int, unsigned int, bool) {}
-void writeCache64(unsigned int, unsigned long long, bool) {}
-void writeCache128(unsigned int, unsigned long long, unsigned long long) {}
+// Cache
+void writeCache8(u32, u8, bool) {}
+void writeCache16(u32, u16, bool) {}
+void writeCache32(u32, u32, bool) {}
+void writeCache64(u32, u64, bool) {}
+void writeCache128(u32, u128, bool) {}
 
-// ── FIFO stubs ──
-void ReadFIFO_VIF1(unsigned long long*) {}
-void WriteFIFO_VIF0(const unsigned long long*) {}
-void WriteFIFO_VIF1(const unsigned long long*) {}
-void WriteFIFO_GIF(const unsigned long long*) {}
+// FIFO
+void ReadFIFO_VIF1(u128*) {}
+void WriteFIFO_VIF0(const u128*) {}
+void WriteFIFO_VIF1(const u128*) {}
+void WriteFIFO_GIF(const u128*) {}
 
-// ── Memcard stubs ──
-std::string FileMcd_GetDefaultName(unsigned int) { return {}; }
-unsigned int FileMcd_GetMtapPort(unsigned int) { return 0; }
-unsigned int FileMcd_GetMtapSlot(unsigned int) { return 0; }
-bool FileMcd_IsMultitapSlot(unsigned int) { return false; }
+// Memcard
+std::string FileMcd_GetDefaultName(u32) { return {}; }
+u32 FileMcd_GetMtapPort(u32) { return 0; }
+u32 FileMcd_GetMtapSlot(u32) { return 0; }
+bool FileMcd_IsMultitapSlot(u32) { return false; }
 
-// ── GSCapture stubs ──
+// AutoEject
+namespace AutoEject { bool CountDownTicks() { return false; } }
+
+// CBreakPoints
+int breakpointTriggeredCpu_ = 0;
+int breakpointTriggered_ = 0;
+int memChecks_ = 0;
+
+// DebugInterface
+int DebugInterface::m_pause_on_entry = 0;
+bool DebugInterface::parseExpression(std::vector<std::pair<u64, u64>>&, u64&, std::string&) { return false; }
+
+// GSCapture
 namespace GSCapture {
-bool BeginCapture(float, int, float, const std::string&) { return false; }
+bool BeginCapture(float, GSVector2i, float, const std::string&) { return false; }
 void DeliverAudioPacket(const float*) {}
-void DeliverVideoFrame(class GSTexture*) {}
+void DeliverVideoFrame(GSTexture*) {}
 void EndCapture() {}
 void Flush() {}
 std::string GetNextCaptureFileName() { return {}; }
@@ -93,43 +110,15 @@ bool IsCapturing() { return false; }
 bool IsCapturingVideo() { return false; }
 }
 
-// ── GSDump stubs ──
+// GSDumpBase
 namespace GSDumpBase {
-void* CreateUncompressedDump(const std::string&, const std::string&,
-    unsigned int, unsigned int, unsigned int, const unsigned int*,
-    const void*, const void*) { return nullptr; }
+void* CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
+void* CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
+void* CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
+void VSync(int, bool, const GSPrivRegSet*) {}
 }
 
-// ── AutoEject stubs ──
-namespace AutoEject { bool CountDownTicks() { return false; } }
-
-// ── CBreakPoints stubs ──
-unsigned int breakpointTriggeredCpu_ = 0;
-unsigned int breakpointTriggered_ = 0;
-unsigned int memChecks_ = 0;
-namespace CBreakPoints {
-void AddBreakPoint(int, unsigned int, bool, bool, bool) {}
-void CheckSkipFirst(int, unsigned int) {}
-void ClearSkipFirst(int) {}
-int GetBreakPointCondition(int, unsigned int) { return 0; }
-std::vector<unsigned long long> GetMemChecks(int) { return {}; }
-bool IsAddressBreakPoint(int, unsigned int) { return false; }
-}
-
-// ── DebugInterface stubs ──
-namespace DebugInterface {
-unsigned int m_pause_on_entry = 0;
-bool parseExpression(std::vector<std::pair<unsigned long long, unsigned long long>>&,
-    unsigned long long&, std::string&) { return false; }
-}
-
-// ── FullscreenUI stubs ──
-namespace FullscreenUI {
-void Render() {}
-std::vector<std::string> GetAvailableLanguageList() { return {}; }
-bool Initialize() { return true; }
-void Shutdown() {}
-bool IsFullscreen() { return false; }
-void OpenGameList() {}
-void OpenSettings() {}
-}
+// GSDumpReplayer
+bool GSDumpReplayer::IsReplayingDump() { return false; }
+bool GSDumpReplayer::IsRunner() { return false; }
+void GSDumpReplayer::RenderUI() {}

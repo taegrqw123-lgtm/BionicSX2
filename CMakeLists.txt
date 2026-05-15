@@ -64,12 +64,6 @@ find_library(SECURITY_FW        Security        REQUIRED)
 set(PCSX2_CONFIG_SOURCES
     src/Pcsx2Config.cpp
     src/SourceLog.cpp
-    src/DebugTools/Breakpoints.cpp
-    src/DebugTools/DebugInterface.cpp
-    src/GSDumpReplayer.cpp
-    src/GSCapture.cpp
-    src/CDVD/CDVD.cpp
-    src/SIO/Memcard/MemoryCardFile.cpp
 )
 
 # Audit Sec 2.1: EE Core — GREEN
@@ -222,6 +216,7 @@ set(IOS_PLATFORM_SOURCES
     ios/platform/Filesystem_iOS.mm
     ios/platform/PCSX2Stubs.mm
     ios/platform/AudioStreamStubs.mm
+    ios/platform/HWStubs.mm
 )
 
 # UIKit frontend (Audit Sec 11.2 H3)
