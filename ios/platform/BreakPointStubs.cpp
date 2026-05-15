@@ -4,4 +4,4 @@
 
 bool CBreakPoints::breakpointTriggered_ = false;
 BreakPointCpu CBreakPoints::breakpointTriggeredCpu_ = BreakPointCpu(0);
-int CBreakPoints::memChecks_ = 0;
+std::vector<MemCheck> CBreakPoints::memChecks_;
