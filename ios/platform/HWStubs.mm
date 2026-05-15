@@ -152,3 +152,32 @@ void Render() {}
 namespace GSPng {
 bool Save(int, const std::string&, const unsigned char*, int, int, int, int, bool) { return false; }
 }
+
+// Texture decompression
+void DecompressBlockBC1(unsigned int, unsigned int, unsigned int, const unsigned char*, unsigned char*) {}
+void DecompressBlockBC2(unsigned int, unsigned int, unsigned int, const unsigned char*, unsigned char*) {}
+void DecompressBlockBC3(unsigned int, unsigned int, unsigned int, const unsigned char*, unsigned char*) {}
+
+// GSTextureReplacements
+namespace GSTextureReplacements {
+void* GetLoader(std::string_view) { return nullptr; }
+bool SavePNGImage(const std::string&, unsigned int, unsigned int, const unsigned char*, unsigned int) { return false; }
+}
+
+// GSVertexSW
+void GSVertexSW::InitStatic() {}
+
+// Host
+namespace Host {
+void* AcquireRenderWindow(bool) { return nullptr; }
+void BeginPresentFrame() {}
+void ReleaseRenderWindow() {}
+bool BeginPresentFrameAfterSkip() { return false; }
+}
+
+// ImGui
+namespace ImGui {
+void* GetCurrentContext() { return nullptr; }
+bool Begin(const char*, bool*, int) { return false; }
+void End() {}
+}
