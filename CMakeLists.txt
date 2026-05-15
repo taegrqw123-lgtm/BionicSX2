@@ -76,8 +76,8 @@ set(PCSX2_CONFIG_SOURCES
     src/GS/GSXXH.cpp
     src/GS/GSUtil.cpp
     src/GS/GSTables.cpp
-    src/GS/MultiISA.cpp
 )
+# MultiISA.cpp excluded (needs cpuinfo which is x86-centric)
 
 # Audit Sec 2.1: EE Core — GREEN
 set(EE_CORE_SOURCES
@@ -279,6 +279,7 @@ target_include_directories(BionicSX2 PRIVATE
     ${CMAKE_SOURCE_DIR}/src/3rdparty/include
     ${CMAKE_SOURCE_DIR}/src/3rdparty/freesurround/include
     ${CMAKE_SOURCE_DIR}/src/3rdparty/soundtouch/soundtouch
+    ${CMAKE_SOURCE_DIR}/src/3rdparty/cpuinfo/include
     "${IOS_DEPS}/include"
 )
 
