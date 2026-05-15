@@ -65,9 +65,6 @@ std::optional<float> CocoaTools::GetViewRefreshRate(const WindowInfo& wi)
 void CocoaTools::MarkHelpMenu(void*) {}
 
 // PORTED: Stub — NSSound not available on iOS
-namespace Common {
-    bool PlaySoundAsync(const char*) { return false; }
-}
 
 std::optional<std::string> CocoaTools::GetBundlePath()
 {

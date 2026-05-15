@@ -220,3 +220,7 @@ namespace DebugInterface {
 }
 
 void standardizeBreakpointAddress(u32&) {}
+
+// HostSys
+#include "common/HostSys.h"
+bool Common::PlaySoundAsync(const char*) { return false; }

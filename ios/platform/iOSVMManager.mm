@@ -2,8 +2,8 @@
 // AUDIT REFERENCE: Section 2.3-ADDENDUM (2.3-E, 2.3-F), 6.2, 12.2
 // STATUS: NEW — Custom VM init for iOS, bypasses macOS VMManager::StartVM()
 
-#import <Foundation/Foundation.h>
 #include "PrecompiledHeader.h"
+#import <Foundation/Foundation.h>
 #include "VMManager.h"
 #include "Config.h"
 #include "GS/GS.h"

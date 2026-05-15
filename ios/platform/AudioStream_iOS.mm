@@ -6,8 +6,8 @@
 // AVAudioEngine implementation as the primary iOS audio path.
 // Audit Sec 9.3: 5ms IOBufferDuration for low latency, 48000 Hz sample rate.
 
-#import <AVFoundation/AVFoundation.h>
 #include "PrecompiledHeader.h"
+#import <AVFoundation/AVFoundation.h>
 #include "Host/AudioStream.h"
 #include "Host/AudioStreamTypes.h"
 #include "common/Console.h"
