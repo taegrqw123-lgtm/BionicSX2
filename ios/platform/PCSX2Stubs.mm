@@ -86,71 +86,11 @@ void mdecWrite0(u32) {}
 void mdecWrite1(u32) {}
 u32 gifBookRw(u32) { return 0; }
 
-// ── Category 8: DEV9 / USB / ATA / SMAP / PGIF stubs ──
-// PORTED: Hardware peripherals not used on iOS (Audit Sec 1.2 RED entries)
-
-// SMAP
-void smap_async() {}
-u8 smap_read8(u32) { return 0; }
-u16 smap_read16(u32) { return 0; }
-u32 smap_read32(u32) { return 0; }
-void smap_write8(u32, u8) {}
-void smap_write16(u32, u16) {}
-void smap_write32(u32, u32) {}
-void smap_readDMA8Mem(u32, u32) {}
-void smap_writeDMA8Mem(u32, u32) {}
-
-// FLASH
-void FLASHinit() {}
-u32 FLASHread32(u32) { return 0; }
-void FLASHwrite32(u32, u32) {}
-
-// DEV9 networking
-void InitNet() {}
-void TermNet() {}
-void ReconfigureLiveNet() {}
-
-// OHCI / USB
-void ohci_ReadMemory(u32) {}
-void ohci_WriteMemory(u32, u32) {}
-void ohci_Async(u32) {}
-void usb_start(int, const char*) {}
-void usb_stop(int) {}
-int usb_open(int, const char*) { return 0; }
-int usb_close(int) { return 0; }
-int usb_ioctl(int, int, void*) { return 0; }
-void usb_desc_() {}
-
-// PSX GPU (PS1 backward compat)
+// ── PSX GPU / VIF stubs ──
 u32 psxDma2GpuR(u32, u32) { return 0; }
 u32 psxDma2GpuW(u32, u32) { return 0; }
 u32 psxGPUr(u32) { return 0; }
 void psxGPUw(u32, u32) {}
-
-// PGIF
-void PGIFrQword(u32, u32) {}
-void PGIFwQword(u32, u32) {}
-u32 PGIFr(u32) { return 0; }
-void PGIFw(u32, u32) {}
-void pgifInit() {}
-
-// FIFO
-void ReadFifoSingleWord() {}
-void ReadFIFO_VIF1() {}
-void WriteFIFO_VIF0(u32) {}
-void WriteFIFO_VIF1(u32) {}
-void WriteFIFO_GIF(u32) {}
-
-// SIF
-void sifReset() {}
-void SIF1Dma() {}
-void dmaSIF1() {}
-void dmaSIF2() {}
-void EEsif1Interrupt() {}
-void sif1Interrupt() {}
-void sif2Interrupt() {}
-
-// VIF
 void dVifRelease(int) {}
 void dVifReset(int) {}
 
@@ -226,11 +166,148 @@ void ReadOSDConfigParames() {}
 std::string ShiftJIS_ConvertString(const std::string& str) { return str; }
 std::vector<std::string> GetMetalAdapterList() { return {}; }
 
-namespace AudioStream {
-    std::unique_ptr<void> CreateCubebAudioStream() { return nullptr; }
-    std::unique_ptr<void> CreateSDLAudioStream() { return nullptr; }
-    std::vector<std::string> GetCubebDriverNames() { return {}; }
-    std::vector<std::string> GetCubebOutputDevices() { return {}; }
+// ── Audio / CDVD / IPU / SIF / etc. Stubs ──
+
+// CDVD
+void CDVDsys_ChangeSource(CDVD_SourceType) {}
+void CDVDsys_SetFile(CDVD_SourceType, const std::string&) {}
+void CopyBIOSToMemory() {}
+
+// SIF
+void EEsif0Interrupt() {}
+void sif0Interrupt() {}
+void sif1Interrupt() {}
+void sif2Interrupt() {}
+
+// IPU
+void ipu0Interrupt() {}
+void ipu1Interrupt() {}
+void ipuCMDProcess() {}
+
+// GS
+void gsSetVideoMode(GS_VideoMode) {}
+
+// CDVD IRQ
+void cdrInterrupt() {}
+void cdvdActionInterrupt() {}
+
+// DEV9
+void DEV9irqHandler() {}
+void DEV9async(u32) {}
+u8 DEV9read8(u32) { return 0; }
+u16 DEV9read16(u32) { return 0; }
+u32 DEV9read32(u32) { return 0; }
+void DEV9readDMA8Mem(u32*, int) {}
+void DEV9write8(u32, u8) {}
+void DEV9write16(u32, u16) {}
+void DEV9write32(u32, u32) {}
+void DEV9writeDMA8Mem(u32*, int) {}
+
+// USB
+void USBirqHandler() {}
+void USBasync(u32) {}
+u8 USBread8(u32) { return 0; }
+u16 USBread16(u32) { return 0; }
+u32 USBread32(u32) { return 0; }
+void USBwrite8(u32, u8) {}
+void USBwrite16(u32, u16) {}
+void USBwrite32(u32, u32) {}
+
+// PGIF
+void PGIFrQword(u32, void*) {}
+void PGIFwQword(u32, void*) {}
+u32 PGIFr(u32) { return 0; }
+void PGIFw(u32, u32) {}
+
+// FW
+u32 FWread32(u32) { return 0; }
+void FWwrite32(u32, u32) {}
+void FWIrqHandler() {}
+
+// Cache
+#include "VU.h"
+void writeCache8(u32, u8, bool) {}
+void writeCache16(u32, u16, bool) {}
+void writeCache32(u32, u32, bool) {}
+void writeCache64(u32, u64, bool) {}
+void writeCache128(u32, u128, bool) {}
+u8  readCache8(u32, bool) { return 0; }
+u16 readCache16(u32, bool) { return 0; }
+u32 readCache32(u32, bool) { return 0; }
+u64 readCache64(u32, bool) { return 0; }
+u128 readCache128(u32, bool) { u128 v={}; return v; }
+
+// FIFO
+void ReadFIFO_VIF1(u128*) {}
+void WriteFIFO_VIF0(const u128*) {}
+void WriteFIFO_VIF1(const u128*) {}
+void WriteFIFO_GIF(const u128*) {}
+
+// PerfMon
+#include "GS/GSPerfMon.h"
+GSPerfMon g_perfmon;
+
+// Texture cache
+#include "GS/Renderers/HW/GSTextureCache.h"
+GSTextureCache* g_texture_cache = nullptr;
+
+// SIO
+#include "SIO/Sio.h"
+#include "SIO/Sio2.h"
+Sio g_Sio0;
+Sio2 g_Sio2;
+
+// Memcard
+#include "SIO/Memcard/MemoryCardFile.h"
+std::string FileMcd_GetDefaultName(u32) { return {}; }
+u32 FileMcd_GetMtapPort(u32) { return 0; }
+u32 FileMcd_GetMtapSlot(u32) { return 0; }
+bool FileMcd_IsMultitapSlot(u32) { return false; }
+
+// AutoEject
+namespace AutoEject { bool CountDownTicks() { return false; } }
+
+// DebugInterface
+namespace DebugInterface {
+BreakPointCpu m_pause_on_entry;
+bool parseExpression(
+    std::vector<std::pair<u64, u64>>&, u64&, std::string&) { return false; }
+}
+
+// CBreakPoints
+namespace CBreakPoints {
+std::mutex breakpointTriggeredCpu_;
+std::mutex breakpointTriggered_;
+std::mutex memChecks_;
+void AddBreakPoint(BreakPointCpu, unsigned int, bool, bool, bool) {}
+void CheckSkipFirst(BreakPointCpu, unsigned int) {}
+void ClearSkipFirst(BreakPointCpu) {}
+BreakPointCpu GetBreakPointCondition(BreakPointCpu, unsigned int) { return BreakPointCpu::Count; }
+std::vector<MemCheck> GetMemChecks(BreakPointCpu) { return {}; }
+bool IsAddressBreakPoint(BreakPointCpu, unsigned int) { return false; }
+}
+
+// GSCapture
+namespace GSCapture {
+bool BeginCapture(float, GSVector2i, float, const std::string&) { return false; }
+void DeliverAudioPacket(const float*) {}
+void DeliverVideoFrame(GSTexture*) {}
+void EndCapture() {}
+void Flush() {}
+std::string GetNextCaptureFileName() { return {}; }
+}
+
+// FullscreenUI
+namespace FullscreenUI {
+std::vector<std::string> GetAvailableLanguageList() { return {}; }
+}
+
+// PCSX2 globals
+s32 configParams1 = 0;
+s32 configParams2 = 0;
+bool eecount_on_last_vdec = false;
+vu1Thread vu1Thread::m_vu1Thread;
+u8* g_RealGSMem = nullptr;
 }
 
 namespace InputManager {
