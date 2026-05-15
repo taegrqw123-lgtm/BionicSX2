@@ -288,7 +288,7 @@ int GSXXH3_64_Update(void*, const void*, size_t) { return 0; }
 
 // Pad
 #include "SIO/Pad/Pad.h"
-int Pad::GetConfigSection(unsigned int) { return 0; }
+std::string Pad::GetConfigSection(unsigned int) { return {}; }
 const Pad::ControllerInfo* Pad::GetControllerInfo(Pad::ControllerType) { return nullptr; }
 const Pad::ControllerInfo* Pad::GetControllerInfoByName(std::string_view) { return nullptr; }
 Pad::ControllerType Pad::GetDefaultPadType(unsigned int) { return Pad::ControllerType(0); }
