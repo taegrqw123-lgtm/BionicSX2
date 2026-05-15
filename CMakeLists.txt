@@ -147,8 +147,6 @@ set(GS_CORE_SOURCES
     src/GS/Renderers/HW/GSTextureCache.cpp
     src/GS/Renderers/HW/GSHwHack.cpp
     src/GS/Renderers/HW/GSTextureReplacements.cpp
-    src/GS/Renderers/HW/GSTextureReplacementLoaders.cpp
-    src/GS/Renderers/HW/GSRendererHWMultiISA.cpp
     src/GS/GSState.cpp
     src/GS/GSLocalMemoryMultiISA.cpp
     src/GS/GSDirtyRect.cpp
@@ -295,6 +293,7 @@ target_include_directories(BionicSX2 PRIVATE
     ${CMAKE_SOURCE_DIR}/src/3rdparty/freesurround/include
     ${CMAKE_SOURCE_DIR}/src/3rdparty/soundtouch/soundtouch
     ${CMAKE_SOURCE_DIR}/src/3rdparty/cpuinfo/include
+    ${CMAKE_SOURCE_DIR}/src/3rdparty/vixl/include
     "${IOS_DEPS}/include"
 )
 
