@@ -1,6 +1,7 @@
 // BionicSX2 iOS — Stub HwRead.cpp
 // Provides explicit template instantiations for all hwRead* pages
 #include "PrecompiledHeader.h"
+#include "MemoryTypes.h"
 #include "ps2/HwInternal.h"
 
 template<uint page> mem32_t hwRead32(u32 mem) { return 0; }

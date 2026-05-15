@@ -1,6 +1,7 @@
 // BionicSX2 iOS — Stub HwWrite.cpp
 // Provides explicit template instantiations for all hwWrite* pages
 #include "PrecompiledHeader.h"
+#include "MemoryTypes.h"
 #include "ps2/HwInternal.h"
 
 template<uint page> void hwWrite8(u32 mem, mem8_t val) {}
