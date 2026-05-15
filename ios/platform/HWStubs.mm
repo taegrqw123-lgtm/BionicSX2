@@ -279,11 +279,14 @@ std::string ShiftJIS_ConvertString(const char*, int) { return {}; }
 bool SaveStateBase::FreezeTag(const char*) { return false; }
 void vtlb_DynBackpatchLoadStore(uptr, u32, u32, u32, u32, u32, u8, u8, u8, bool, bool, bool) {}
 
-// MultiISAFunctions — function pointer variables needed by GSXXH.cpp
+// MultiISAFunctions — function references needed by GSXXH.cpp
+static u64 gsxxh_long_stub(const void*, size_t) { return 0; }
+static u64 gsxxh_digest_stub(void*) { return 0; }
+static u32 gsxxh_update_stub(void*, const void*, size_t) { return 0; }
 namespace MultiISAFunctions {
-u64 (*GSXXH3_64_Long)(const void*, size_t) = nullptr;
-u64 (*GSXXH3_64_Digest)(void*) = nullptr;
-int (*GSXXH3_64_Update)(void*, const void*, size_t) = nullptr;
+u64 (&GSXXH3_64_Long)(const void*, size_t) = gsxxh_long_stub;
+u32 (&GSXXH3_64_Update)(void*, const void*, size_t) = gsxxh_update_stub;
+u64 (&GSXXH3_64_Digest)(void*) = gsxxh_digest_stub;
 }
 
 // Pad
