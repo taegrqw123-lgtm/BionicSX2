@@ -181,4 +181,22 @@ namespace ImGui {
 void* GetCurrentContext() { return nullptr; }
 bool Begin(const char*, bool*, int) { return false; }
 void End() {}
+void* GetPlatformIO() { return nullptr; }
+}
+
+// ImGuiManager
+namespace ImGuiManager {
+bool Initialize() { return false; }
+void NewFrame() {}
+void ReloadFonts() {}
+void RenderOSD() {}
+void RequestScaleUpdate() {}
+void Shutdown(bool) {}
+void SkipFrame() {}
+void WindowResized() {}
+}
+
+// MemcardBusy
+namespace MemcardBusy {
+void Decrement() {}
 }
