@@ -8,7 +8,7 @@
 u32 VMManager::GetDiscCRC() { return 0; }
 std::string VMManager::GetDiscSerial() { return {}; }
 GSVSyncMode VMManager::GetEffectiveVSyncMode() { return GSVSyncMode::Disabled; }
-VMManager::State VMManager::GetState() { return VMManager::State::Shutdown; }
+VMState VMManager::GetState() { return VMState::Shutdown; }
 float VMManager::GetTargetSpeed() { return 1.0f; }
 std::string VMManager::GetTitle(bool) { return {}; }
 bool VMManager::HasValidVM() { return false; }

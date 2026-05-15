@@ -284,8 +284,7 @@ void ShiftJIS_ConvertString(const char*) {}
 void ShiftJIS_ConvertString(const char*, int) {}
 bool SaveStateBase::FreezeTag(const char*) { return false; }
 void GSCapture::BeginCapture(float, GSVector2i, float, const std::string&) {}
-void SymbolGuardian::ClearIrxModules() {}
-void SymbolGuardian::ReadWrite(std::function<void(ccc::SymbolDatabase&)>) {}
+// SymbolGuardian stubs in PCSX2Stubs.mm
 void standardizeBreakpointAddress(u32&) {}
 void vtlb_DynBackpatchLoadStore(uptr, u32, u32, u32, u8, u8, u8, bool, bool, bool) {}
 
