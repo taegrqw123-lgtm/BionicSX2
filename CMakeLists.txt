@@ -209,6 +209,7 @@ target_include_directories(BionicSX2 PRIVATE
     ${CMAKE_SOURCE_DIR}/src/common
     ${CMAKE_SOURCE_DIR}/src/3rdparty
     ${CMAKE_SOURCE_DIR}/src/3rdparty/fmt/include
+    ${CMAKE_SOURCE_DIR}/src/3rdparty/fast_float/include
     "${IOS_DEPS}/include"
 )
 
