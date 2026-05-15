@@ -165,6 +165,7 @@ bool SavePNGImage(const std::string&, unsigned int, unsigned int, const unsigned
 }
 
 // GSVertexSW
+class GSVertexSW { public: static void InitStatic(); };
 void GSVertexSW::InitStatic() {}
 
 // Host
