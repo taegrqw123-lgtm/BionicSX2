@@ -47,6 +47,7 @@ find_package(ZLIB     REQUIRED QUIET)
 find_package(PNG      QUIET)
 find_package(Freetype QUIET)
 
+find_library(FOUNDATION_FW       Foundation      REQUIRED)
 find_library(AUDIOTOOLBOX_FW    AudioToolbox    REQUIRED)
 find_library(AVFOUNDATION_FW    AVFoundation    REQUIRED)
 find_library(COREAUDIO_FW       CoreAudio       REQUIRED)
@@ -268,6 +269,7 @@ target_include_directories(BionicSX2 PRIVATE
 # ── Linked frameworks (Audit Sec 10.3) ──
 target_link_libraries(BionicSX2 PRIVATE
     ZLIB::ZLIB
+    ${FOUNDATION_FW}
     ${AUDIOTOOLBOX_FW}
     ${AVFOUNDATION_FW}
     ${COREAUDIO_FW}

@@ -224,9 +224,12 @@ void standardizeBreakpointAddress(u32&) {}
 // EnableFMV flag — needed by Counters.cpp and IPU code
 bool EnableFMV = false;
 
-// Console logging globals — defined in BiosTools.cpp
+// PCSX2 global variables (defined in various .cpp files not compiled for iOS)
 bool AllowParams1 = false;
 bool AllowParams2 = false;
+bool NoOSD = false;
+bool FMVstarted = false;
+u32 PSXCLK = 36864000;
 
 // HostSys
 #include "common/HostSys.h"
