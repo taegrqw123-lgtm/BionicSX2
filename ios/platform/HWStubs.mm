@@ -112,13 +112,15 @@ bool IsCapturingVideo() { return false; }
 
 // GSDumpBase
 namespace GSDumpBase {
-void* CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
-void* CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
-void* CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
-void VSync(int, bool, const GSPrivRegSet*) {}
+void* CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
+void* CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
+void* CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
+void VSync(int, bool, const void*) {}
 }
 
 // GSDumpReplayer
-bool GSDumpReplayer::IsReplayingDump() { return false; }
-bool GSDumpReplayer::IsRunner() { return false; }
-void GSDumpReplayer::RenderUI() {}
+namespace GSDumpReplayer {
+bool IsReplayingDump() { return false; }
+bool IsRunner() { return false; }
+void RenderUI() {}
+}
