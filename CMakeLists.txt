@@ -161,7 +161,7 @@ set(IOS_PLATFORM_SOURCES
     ios/platform/Host_iOS.mm
     ios/platform/CocoaTools.mm
     ios/platform/AudioStream_iOS.mm
-    ios/platform/Filesystem_iOS.cpp
+    ios/platform/Filesystem_iOS.mm
     ios/platform/PCSX2Stubs.mm
 )
 
