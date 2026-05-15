@@ -243,69 +243,12 @@ void WriteFIFO_VIF0(const u128*) {}
 void WriteFIFO_VIF1(const u128*) {}
 void WriteFIFO_GIF(const u128*) {}
 
-// PerfMon
-#include "GS/GSPerfMon.h"
-GSPerfMon g_perfmon;
-
-// Texture cache
-#include "GS/Renderers/HW/GSTextureCache.h"
-GSTextureCache* g_texture_cache = nullptr;
-
-// SIO
-#include "SIO/Sio.h"
-#include "SIO/Sio2.h"
-Sio g_Sio0;
-Sio2 g_Sio2;
-
-// Memcard
-#include "SIO/Memcard/MemoryCardFile.h"
-std::string FileMcd_GetDefaultName(u32) { return {}; }
-u32 FileMcd_GetMtapPort(u32) { return 0; }
-u32 FileMcd_GetMtapSlot(u32) { return 0; }
-bool FileMcd_IsMultitapSlot(u32) { return false; }
-
-// AutoEject
-namespace AutoEject { bool CountDownTicks() { return false; } }
-
-// DebugInterface
-namespace DebugInterface {
-BreakPointCpu m_pause_on_entry;
-bool parseExpression(
-    std::vector<std::pair<u64, u64>>&, u64&, std::string&) { return false; }
-}
-
-// CBreakPoints — stubs
-int breakpointTriggeredCpu_ = 0;
-int breakpointTriggered_ = 0;
-int memChecks_ = 0;
-namespace CBreakPoints {
-void AddBreakPoint(int, unsigned int, bool, bool, bool) {}
-void CheckSkipFirst(int, unsigned int) {}
-void ClearSkipFirst(int) {}
-int GetBreakPointCondition(int, unsigned int) { return 0; }
-std::vector<int> GetMemChecks(int) { return {}; }
-bool IsAddressBreakPoint(int, unsigned int) { return false; }
-}
-
-// GSCapture
-namespace GSCapture {
-bool BeginCapture(float, GSVector2i, float, const std::string&) { return false; }
-void DeliverAudioPacket(const float*) {}
-void DeliverVideoFrame(GSTexture*) {}
-void EndCapture() {}
-void Flush() {}
-std::string GetNextCaptureFileName() { return {}; }
-}
-
-// FullscreenUI
-namespace FullscreenUI {
-std::vector<std::string> GetAvailableLanguageList() { return {}; }
-}
+// PCSX2 globals that aren't defined in compiled source files
+bool eecount_on_last_vdec = false;
 
 // PCSX2 globals
 s32 configParams1 = 0;
 s32 configParams2 = 0;
-bool eecount_on_last_vdec = false;
 u8* g_RealGSMem = nullptr;
 
 namespace InputManager {
