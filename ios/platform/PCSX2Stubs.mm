@@ -274,11 +274,11 @@ bool parseExpression(
     std::vector<std::pair<u64, u64>>&, u64&, std::string&) { return false; }
 }
 
-// CBreakPoints
+// CBreakPoints — stubs
+int breakpointTriggeredCpu_ = 0;
+int breakpointTriggered_ = 0;
+int memChecks_ = 0;
 namespace CBreakPoints {
-std::mutex breakpointTriggeredCpu_;
-std::mutex breakpointTriggered_;
-std::mutex memChecks_;
 void AddBreakPoint(BreakPointCpu, unsigned int, bool, bool, bool) {}
 void CheckSkipFirst(BreakPointCpu, unsigned int) {}
 void ClearSkipFirst(BreakPointCpu) {}
@@ -306,9 +306,7 @@ std::vector<std::string> GetAvailableLanguageList() { return {}; }
 s32 configParams1 = 0;
 s32 configParams2 = 0;
 bool eecount_on_last_vdec = false;
-vu1Thread vu1Thread::m_vu1Thread;
 u8* g_RealGSMem = nullptr;
-}
 
 namespace InputManager {
     u32 ConvertHostKeyboardStringToCode(const std::string&) { return 0; }
