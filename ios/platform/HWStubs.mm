@@ -277,14 +277,9 @@ void writebackCache() {}
 std::string ShiftJIS_ConvertString(const char*) { return {}; }
 std::string ShiftJIS_ConvertString(const char*, int) { return {}; }
 bool SaveStateBase::FreezeTag(const char*) { return false; }
-void vtlb_DynBackpatchLoadStore(uptr, u32, u32, u32, u8, u8, u8, bool, bool, bool) {}
+void vtlb_DynBackpatchLoadStore(uptr, u32, u32, u32, u32, u32, u8, u8, u8, bool, bool, bool) {}
 
-// MultiISAFunctions
-namespace MultiISAFunctions {
-u64 GSXXH3_64_Long(const void*, size_t) { return 0; }
-u64 GSXXH3_64_Digest(void*) { return 0; }
-int GSXXH3_64_Update(void*, const void*, size_t) { return 0; }
-}
+// MultiISAFunctions — provided by GSXXH.cpp (compiled)
 
 // Pad
 #include "SIO/Pad/Pad.h"
@@ -345,7 +340,7 @@ bool StateWrapper::DoMarker(const char*) { return false; }
 // SymbolGuardian
 #include "DebugTools/SymbolGuardian.h"
 void SymbolGuardian::ClearIrxModules() {}
-void SymbolGuardian::ReadWrite(std::function<void(ccc::SymbolDatabase&)>) {}
+void SymbolGuardian::ReadWrite(std::function<void(ccc::SymbolDatabase&)>) noexcept {}
 
 // USB
 namespace USB {
