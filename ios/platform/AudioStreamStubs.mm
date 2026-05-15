@@ -29,8 +29,8 @@ void AudioStream::SetNominalRate(float) {}
 void AudioStream::SetOutputVolume(u32) {}
 void AudioStream::SetStretchEnabled(bool) {}
 void AudioStream::WriteChunk(const float*) {}
-std::string AudioStream::GetBackendName(AudioBackend) { return "Null"; }
-AudioBackend AudioStream::ParseBackendName(const char*) { return AudioBackend::Null; }
+const char* AudioStream::GetBackendName(AudioBackend) { return "Null"; }
+std::optional<AudioBackend> AudioStream::ParseBackendName(const char*) { return std::nullopt; }
 
 // Parameters
 bool AudioStreamParameters::operator==(const AudioStreamParameters&) const { return true; }
