@@ -111,7 +111,7 @@ namespace DebugInterface {
 
 // GSCapture
 namespace GSCapture {
-bool BeginCapture(float, GSVector2i, float, const std::string&) { return false; }
+bool BeginCapture(float, GSVector2i, float, std::string) { return false; }
 void DeliverAudioPacket(const float*) {}
 void DeliverVideoFrame(GSTexture*) {}
 void EndCapture() {}
@@ -123,14 +123,13 @@ bool IsCapturingVideo() { return false; }
 }
 
 // GSDumpBase stubs
-namespace GSDumpBase {
-void* CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
-void* CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
-void* CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
-void VSync(int, bool, const void*) {}
-void ReadFIFO(unsigned int) {}
-void Transfer(int, const unsigned char*, unsigned long) {}
-}
+#include "GS/GSDump.h"
+std::unique_ptr<GSDumpBase> GSDumpBase::CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
+std::unique_ptr<GSDumpBase> GSDumpBase::CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
+std::unique_ptr<GSDumpBase> GSDumpBase::CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
+void GSDumpBase::VSync(int, bool, const GSPrivRegSet*) {}
+void GSDumpBase::ReadFIFO(u32) {}
+void GSDumpBase::Transfer(int, const u8*, size_t) {}
 
 // GSDumpReplayer
 namespace GSDumpReplayer {
@@ -280,12 +279,9 @@ void hwRead16_page_0F_INTC_HACK(u32) {}
 void hwRead32_page_0F_INTC_HACK(u32) {}
 void __clear_cache(void*, void*) {}
 void writebackCache() {}
-void ShiftJIS_ConvertString(const char*) {}
-void ShiftJIS_ConvertString(const char*, int) {}
+std::string ShiftJIS_ConvertString(const char*) { return {}; }
+std::string ShiftJIS_ConvertString(const char*, int) { return {}; }
 bool SaveStateBase::FreezeTag(const char*) { return false; }
-void GSCapture::BeginCapture(float, GSVector2i, float, const std::string&) {}
-// SymbolGuardian stubs in PCSX2Stubs.mm
-void standardizeBreakpointAddress(u32&) {}
 void vtlb_DynBackpatchLoadStore(uptr, u32, u32, u32, u8, u8, u8, bool, bool, bool) {}
 
 // MultiISAFunctions
