@@ -166,7 +166,6 @@ set(COMMON_LIB_SOURCES
     src/common/DynamicLibrary.cpp
     src/common/Perf.cpp
     src/common/AlignedMalloc.cpp
-    src/common/StackWalker.cpp
     src/common/CrashHandler.cpp
     src/common/WindowInfo.cpp
     src/common/ReadbackSpinManager.cpp
