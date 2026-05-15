@@ -253,6 +253,7 @@ set(IOS_PLATFORM_SOURCES
     ios/platform/AudioStreamStubs.mm
     ios/platform/HWStubs.mm
     ios/platform/BreakPointStubs.cpp
+    ios/platform/VMManagerStubs.cpp
 )
 
 # UIKit frontend (Audit Sec 11.2 H3)
