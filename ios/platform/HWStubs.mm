@@ -299,3 +299,31 @@ int GetInternalFPSMethod() { return 0; }
 void OnGPUPresent(float) {}
 void Update(bool, bool, bool) {}
 }
+
+// Memcard
+unsigned int FileMcd_GetCRC(unsigned int, unsigned int) { return 0; }
+bool FileMcd_IsPSX(unsigned int, unsigned int) { return false; }
+bool FileMcd_IsPresent(unsigned int, unsigned int) { return false; }
+void FileMcd_NextFrame(unsigned int, unsigned int) {}
+void FileMcd_ReIndex(unsigned int, unsigned int, const std::string&) {}
+
+// IopMemory generic fallbacks
+namespace IopMemory {
+unsigned char iopHwRead8_generic(unsigned int) { return 0; }
+unsigned short iopHwRead16_generic(unsigned int) { return 0; }
+unsigned int iopHwRead32_generic(unsigned int) { return 0; }
+void iopHwWrite8_generic(unsigned int, unsigned char) {}
+void iopHwWrite16_generic(unsigned int, unsigned short) {}
+void iopHwWrite32_generic(unsigned int, unsigned int) {}
+}
+
+// MemoryCardProtocol
+namespace MemoryCardProtocol {
+int AuthF3() { return 0; }
+int AuthF7() { return 0; }
+int AuthXor() { return 0; }
+}
+
+// GSVertexSW
+#include "GS/Renderers/SW/GSVertexSW.h"
+void GSVertexSW::InitStatic() {}
