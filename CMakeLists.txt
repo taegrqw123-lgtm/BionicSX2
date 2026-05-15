@@ -145,8 +145,8 @@ set(SPU2_SOURCES
 # Shared memory management (Audit Sec 0-D, 6.2)
 set(IOS_MEMORY_SOURCES
     ios/platform/HostSys_iOS.cpp
-    common/Linux/LnxHostSys.cpp
-    common/Darwin/DarwinMisc.cpp
+    src/common/Linux/LnxHostSys.cpp
+    src/common/Darwin/DarwinMisc.cpp
 )
 
 # Threading (Audit Sec 5.3)
@@ -206,10 +206,9 @@ target_include_directories(BionicSX2 PRIVATE
     ${CMAKE_SOURCE_DIR}/src
     ${CMAKE_SOURCE_DIR}/ios/platform
     ${CMAKE_SOURCE_DIR}/metal
-    ${CMAKE_SOURCE_DIR}/pcsx2/common
-    ${CMAKE_SOURCE_DIR}/pcsx2/pcsx2
-    ${CMAKE_SOURCE_DIR}/pcsx2/3rdparty
-    ${CMAKE_SOURCE_DIR}/pcsx2/3rdparty/fmt/include
+    ${CMAKE_SOURCE_DIR}/src/common
+    ${CMAKE_SOURCE_DIR}/src/3rdparty
+    ${CMAKE_SOURCE_DIR}/src/3rdparty/fmt/include
     "${IOS_DEPS}/include"
 )
 
