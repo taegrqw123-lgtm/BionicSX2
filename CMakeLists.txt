@@ -165,12 +165,10 @@ set(IOS_PLATFORM_SOURCES
     ios/platform/PCSX2Stubs.mm
 )
 
-# SwiftUI frontend (Audit Sec 11.2 H3)
+# UIKit frontend (Audit Sec 11.2 H3)
 set(IOS_UI_SOURCES
-    ios/ui/BionicSX2App.swift
-    ios/ui/ContentView.swift
-    ios/ui/MetalViewController.swift
-    ios/ui/GameControllerManager.swift
+    ios/platform/main.mm
+    ios/platform/MetalViewController.mm
 )
 
 # Metal Renderer (Audit Sec 4.1-4.3)
@@ -210,6 +208,9 @@ target_include_directories(BionicSX2 PRIVATE
     ${CMAKE_SOURCE_DIR}/src/3rdparty
     ${CMAKE_SOURCE_DIR}/src/3rdparty/fmt/include
     ${CMAKE_SOURCE_DIR}/src/3rdparty/fast_float/include
+    ${CMAKE_SOURCE_DIR}/src/3rdparty/ccc/src
+    ${CMAKE_SOURCE_DIR}/src/3rdparty/imgui
+    ${CMAKE_SOURCE_DIR}/src/3rdparty
     "${IOS_DEPS}/include"
 )
 
