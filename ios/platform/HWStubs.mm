@@ -1,12 +1,13 @@
-// BionicSX2 iOS — HW I/O stubs with exact type matching from PCSX2 headers
+// BionicSX2 iOS — HW I/O stubs
 #include "PrecompiledHeader.h"
-#include "CDVD/CDVD.h"
-#include "DebugTools/Breakpoints.h"
-#include "DebugTools/DebugInterface.h"
-#include "SIO/Memcard/MemoryCardFile.h"
-#include "GS/GS.h"
-#include "GSDumpReplayer.h"
-#include "common/HeterogeneousContainers.h"
+#include <string>
+#include <vector>
+
+// Forward declarations for types that would require heavy header inclusion
+enum class CDVD_SourceType : unsigned char;
+enum class GS_VideoMode : int;
+class GSTexture;
+struct GSVector2i { int x, y; };
 
 // CDVD
 void CDVDsys_ChangeSource(CDVD_SourceType) {}
