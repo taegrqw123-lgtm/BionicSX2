@@ -327,7 +327,7 @@ void GSVertexSW::InitStatic() {}
 #include "GS/Renderers/HW/GSRendererHW.h"
 #include "GS/Renderers/SW/GSRendererSW.h"
 #include "GS/Renderers/Common/GSVertexTrace.h"
-void isa_native::makeGSRendererSW(int) {}
+GSRenderer* isa_native::makeGSRendererSW(int) { return nullptr; }
 void isa_native::GSRendererHWPopulateFunctions(GSRendererHW&) {}
 void isa_native::GSVertexTracePopulateFunctions(GSVertexTrace&) {}
 
@@ -349,11 +349,7 @@ int DeviceTypeNameToIndex(std::string_view) { return 0; }
 int GetConfigSection(int) { return 0; }
 }
 
-// RGBA8Image
-struct RGBA8Image { RGBA8Image() = default; RGBA8Image(RGBA8Image&&) = default; bool SaveToFile(const char*, unsigned char) const { return false; } };
-
-// bc7decomp
-namespace bc7decomp { void unpack_bc7(const void*, void*) {} }
+// RGBA8Image and bc7decomp provided by GSRenderer.h includes
 
 // CACHE opcode
 namespace R5900 { namespace Interpreter { namespace OpcodeImpl {
