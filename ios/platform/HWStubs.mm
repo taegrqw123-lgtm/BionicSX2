@@ -127,7 +127,7 @@ bool IsCapturingVideo() { return false; }
 std::unique_ptr<GSDumpBase> GSDumpBase::CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
 std::unique_ptr<GSDumpBase> GSDumpBase::CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
 std::unique_ptr<GSDumpBase> GSDumpBase::CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
-void GSDumpBase::VSync(int, bool, const GSPrivRegSet*) {}
+bool GSDumpBase::VSync(int, bool, const GSPrivRegSet*) { return false; }
 void GSDumpBase::ReadFIFO(u32) {}
 void GSDumpBase::Transfer(int, const u8*, size_t) {}
 
@@ -158,17 +158,12 @@ void* GetLoader(std::string_view) { return nullptr; }
 bool SavePNGImage(const std::string&, unsigned int, unsigned int, const unsigned char*, unsigned int) { return false; }
 }
 
-// GSVertexSW
-class GSVertexSW { public: static void InitStatic(); };
-void GSVertexSW::InitStatic() {}
 
-// Host
-namespace Host {
-void* AcquireRenderWindow(bool) { return nullptr; }
-void BeginPresentFrame() {}
-void ReleaseRenderWindow() {}
-bool BeginPresentFrameAfterSkip() { return false; }
-}
+
+// Host (functions declared in GS.h)
+std::optional<WindowInfo> Host::AcquireRenderWindow(bool) { return std::nullopt; }
+void Host::BeginPresentFrame() {}
+void Host::ReleaseRenderWindow() {}
 
 // ImGui
 namespace ImGui {
