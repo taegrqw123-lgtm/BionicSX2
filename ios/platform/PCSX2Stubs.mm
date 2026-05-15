@@ -166,78 +166,7 @@ void ReadOSDConfigParames() {}
 std::string ShiftJIS_ConvertString(const std::string& str) { return str; }
 std::vector<std::string> GetMetalAdapterList() { return {}; }
 
-// ── Audio / CDVD / IPU / SIF / etc. Stubs ──
-
-// CDVD
-void CDVDsys_ChangeSource(int) {}
-void CDVDsys_SetFile(int, const std::string&) {}
-void CopyBIOSToMemory() {}
-
-// SIF
-void EEsif0Interrupt() {}
-void sif0Interrupt() {}
-void sif1Interrupt() {}
-void sif2Interrupt() {}
-
-// IPU
-void ipu0Interrupt() {}
-void ipu1Interrupt() {}
-void ipuCMDProcess() {}
-
-// GS
-void gsSetVideoMode(int) {}
-
-// CDVD IRQ
-void cdrInterrupt() {}
-void cdvdActionInterrupt() {}
-
-// DEV9
-void DEV9irqHandler() {}
-void DEV9async(u32) {}
-u8 DEV9read8(u32) { return 0; }
-u16 DEV9read16(u32) { return 0; }
-u32 DEV9read32(u32) { return 0; }
-void DEV9readDMA8Mem(u32*, int) {}
-void DEV9write8(u32, u8) {}
-void DEV9write16(u32, u16) {}
-void DEV9write32(u32, u32) {}
-void DEV9writeDMA8Mem(u32*, int) {}
-
-// USB
-void USBirqHandler() {}
-void USBasync(u32) {}
-u8 USBread8(u32) { return 0; }
-u16 USBread16(u32) { return 0; }
-u32 USBread32(u32) { return 0; }
-void USBwrite8(u32, u8) {}
-void USBwrite16(u32, u16) {}
-void USBwrite32(u32, u32) {}
-
-// PGIF
-void PGIFrQword(u32, void*) {}
-void PGIFwQword(u32, void*) {}
-u32 PGIFr(u32) { return 0; }
-void PGIFw(u32, u32) {}
-
-// FW
-u32 FWread32(u32) { return 0; }
-void FWwrite32(u32, u32) {}
-void FWIrqHandler() {}
-
-// Cache (readCache* are defined in Cache.cpp, only writeCache stubs needed here)
-void writeCache8(u32, u8, bool) {}
-void writeCache16(u32, u16, bool) {}
-void writeCache32(u32, u32, bool) {}
-void writeCache64(u32, u64, bool) {}
-void writeCache128(u32, u128, bool) {}
-
-// FIFO
-void ReadFIFO_VIF1(u128*) {}
-void WriteFIFO_VIF0(const u128*) {}
-void WriteFIFO_VIF1(const u128*) {}
-void WriteFIFO_GIF(const u128*) {}
-
-// PCSX2 globals that aren't defined in compiled source files
+// ── PCSX2 globals that aren't defined in compiled source files ──
 bool eecount_on_last_vdec = false;
 
 // PCSX2 globals

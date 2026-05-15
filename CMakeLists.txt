@@ -216,6 +216,7 @@ set(IOS_PLATFORM_SOURCES
     ios/platform/Filesystem_iOS.mm
     ios/platform/PCSX2Stubs.mm
     ios/platform/AudioStreamStubs.mm
+    ios/platform/HWStubs.mm
 )
 
 # UIKit frontend (Audit Sec 11.2 H3)
