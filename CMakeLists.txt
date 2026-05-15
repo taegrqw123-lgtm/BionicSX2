@@ -193,10 +193,7 @@ set(CCC_SOURCES
     src/3rdparty/ccc/src/ccc/util.cpp
 )
 
-# Host abstraction sources
-set(HOST_SOURCES
-    src/Host/AudioStream.cpp
-)
+# Host abstraction sources (AudioStream.cpp excluded — factory methods stubbed)
 
 # Threading (Audit Sec 5.3)
 set(IOS_THREADING_SOURCES
@@ -211,6 +208,7 @@ set(IOS_PLATFORM_SOURCES
     ios/platform/AudioStream_iOS.mm
     ios/platform/Filesystem_iOS.mm
     ios/platform/PCSX2Stubs.mm
+    ios/platform/AudioStreamStubs.mm
 )
 
 # UIKit frontend (Audit Sec 11.2 H3)

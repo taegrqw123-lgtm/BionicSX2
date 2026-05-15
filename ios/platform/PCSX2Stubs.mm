@@ -209,20 +209,6 @@ namespace AudioStream {
     std::vector<std::string> GetCubebOutputDevices() { return {}; }
 }
 
-// AudioStream factory methods needed by AudioStream.cpp
-#include "Host/AudioStream.h"
-std::unique_ptr<AudioStream> AudioStream::CreateCubebAudioStream(u32 sample_rate,
-    const AudioStreamParameters& parameters, const char* driver_name,
-    const char* device_name, bool stretch_enabled, Error* error)
-{
-    return nullptr;
-}
-std::unique_ptr<AudioStream> AudioStream::CreateSDLAudioStream(u32 sample_rate,
-    const AudioStreamParameters& parameters, bool stretch_enabled, Error* error)
-{
-    return nullptr;
-}
-
 namespace InputManager {
     u32 ConvertHostKeyboardStringToCode(const std::string&) { return 0; }
     std::string ConvertHostKeyboardCodeToString(u32) { return {}; }
