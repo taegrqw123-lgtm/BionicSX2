@@ -279,12 +279,12 @@ int breakpointTriggeredCpu_ = 0;
 int breakpointTriggered_ = 0;
 int memChecks_ = 0;
 namespace CBreakPoints {
-void AddBreakPoint(BreakPointCpu, unsigned int, bool, bool, bool) {}
-void CheckSkipFirst(BreakPointCpu, unsigned int) {}
-void ClearSkipFirst(BreakPointCpu) {}
-BreakPointCpu GetBreakPointCondition(BreakPointCpu, unsigned int) { return BreakPointCpu::Count; }
-std::vector<MemCheck> GetMemChecks(BreakPointCpu) { return {}; }
-bool IsAddressBreakPoint(BreakPointCpu, unsigned int) { return false; }
+void AddBreakPoint(int, unsigned int, bool, bool, bool) {}
+void CheckSkipFirst(int, unsigned int) {}
+void ClearSkipFirst(int) {}
+int GetBreakPointCondition(int, unsigned int) { return 0; }
+std::vector<int> GetMemChecks(int) { return {}; }
+bool IsAddressBreakPoint(int, unsigned int) { return false; }
 }
 
 // GSCapture
