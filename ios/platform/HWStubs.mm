@@ -125,11 +125,13 @@ bool IsCapturingVideo() { return false; }
 }
 
 // GSDumpBase
+struct freezeData { int size; unsigned char* data; };
+struct GSPrivRegSet { unsigned char dummy; };
 namespace GSDumpBase {
-void* CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
-void* CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
-void* CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const void*, const void*) { return nullptr; }
-void VSync(int, bool, const void*) {}
+void* CreateUncompressedDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
+void* CreateXzDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
+void* CreateZstDump(const std::string&, const std::string&, u32, u32, u32, const u32*, const freezeData&, const GSPrivRegSet*) { return nullptr; }
+void VSync(int, bool, const GSPrivRegSet*) {}
 }
 
 // GSDumpReplayer

@@ -65,8 +65,7 @@ set(PCSX2_CONFIG_SOURCES
     src/Pcsx2Config.cpp
     src/SourceLog.cpp
     src/GS/GSPerfMon.cpp
-    src/GS/GSDump.cpp
-    src/GS/GSPng.cpp
+    # GSDump.cpp and GSPng.cpp excluded (need LZMA and libpng headers)
     src/GS/GSState.cpp
     src/GS/GSClut.cpp
     src/GS/GSLocalMemory.cpp
