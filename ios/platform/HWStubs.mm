@@ -363,6 +363,13 @@ int DeviceTypeNameToIndex(std::string_view) { return 0; }
 int GetConfigSection(int) { return 0; }
 }
 
+// FileMcd stubs
+#include "SIO/Memcard/MemoryCardFile.h"
+void FileMcd_GetSizeInfo(u32, u32, McdSizeInfo*) {}
+s32 FileMcd_Read(u32, u32, u8*, u32, int) { return 0; }
+s32 FileMcd_Save(u32, u32, const u8*, u32, int) { return 0; }
+s32 FileMcd_EraseBlock(u32, u32, u32) { return 0; }
+
 // RGBA8Image and bc7decomp provided by GSRenderer.h includes
 
 // CACHE opcode

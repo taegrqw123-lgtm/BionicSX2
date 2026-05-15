@@ -178,7 +178,7 @@ set(SPU2_SOURCES
     src/SIO/Sio2.cpp
     src/SIO/Memcard/MemoryCardProtocol.cpp
     src/SIO/Multitap/MultitapProtocol.cpp
-    src/SIO/Memcard/MemoryCardFile.cpp
+    # MemoryCardFile.cpp excluded (pulls in folder-based memcard deps)
     # Pad sources excluded (drag in SDL3 headers)
     src/SPU2/ADSR.cpp
     src/SPU2/Dma.cpp
