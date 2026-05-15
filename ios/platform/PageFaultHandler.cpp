@@ -27,6 +27,7 @@
 #include <sys/sysctl.h>
 #include <thread>
 #include <time.h>
+#include <unistd.h>
 #include <mach/mach_time.h>
 #include <mach/message.h>
 #include <mach/task.h>

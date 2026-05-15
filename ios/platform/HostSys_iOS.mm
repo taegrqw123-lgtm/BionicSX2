@@ -131,7 +131,7 @@ std::unique_ptr<SharedMemoryMappingArea> SharedMemoryMappingArea::Create(size_t 
     }
 
     return std::unique_ptr<SharedMemoryMappingArea>(
-        new SharedMemoryMappingArea(static_cast<u8*>(addr), size, size / __pagesize));
+        new SharedMemoryMappingArea(static_cast<u8*>(reinterpret_cast<void*>(addr)), size, size / __pagesize));
 }
 
 u8* SharedMemoryMappingArea::Map(void* file_handle, size_t file_offset, void* map_base, size_t map_size, const PageProtectionMode& mode)
